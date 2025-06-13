@@ -35,7 +35,6 @@
     max-height: none;
   }
   
-  /* You may also need to adjust the header height or padding */
   .header .logo {
     padding: 10px 0;
   }
@@ -139,7 +138,7 @@
    {% if request.path == '/' %}
   <div id="preloader">
     <video id="preloader-video" autoplay muted loop playsinline>
-      <source src="{{ url_for('static', filename='video/preloader.mov') }}" type="video/quicktime">
+      <source src="{{ url_for('static', filename='video/preloader.mp4') }}" type="video/mp4">
     </video>
   </div>
   {% endif %}
