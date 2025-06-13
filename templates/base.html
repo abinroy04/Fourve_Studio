@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{% block title %}FOURVE Studio{% endblock %}</title>
+  <meta name="description" content="{% block description %}{% endblock %}">
+  <meta name="keywords" content="{% block keywords %}{% endblock %}">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Mukta:wght@200;300;400;500;600;700;800&family=Abel:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+  <style>
+  /* Increase logo size */
+  .logo img {
+    width: 60px; /* Adjust this value as needed */
+    height: auto;
+    max-height: none;
+  }
+  
+  /* You may also need to adjust the header height or padding */
+  .header .logo {
+    padding: 10px 0;
+  }
+  </style>
+
+  {% block extra_css %}{% endblock %}
+
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+  <header id="header" class="header d-flex align-items-center position-relative">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="{{ url_for('home') }}" class="logo d-flex align-items-center">
+        <img src="{{ url_for('static', filename='img/logo.webp') }}" alt="">
+        <h1 class="sitename">FOURVE</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('team') }}">Team</a></li>
+          <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="{{ url_for('livestreaming') }}">Live Streaming</a></li>
+              <li><a href="{{ url_for('media_production') }}">Media Production</a></li>
+              <li><a href="{{ url_for('digital_marketing') }}">Digital Marketing</a></li>
+              <li><a href="{{ url_for('event_management') }}">Event Management</a></li>
+            </ul>
+          </li>
+          <li><a href="{{ url_for('home') }}#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="{{ url_for('home') }}" class="logo d-flex align-items-center">
+            <span class="sitename">FOURVE</span>
+          </a>
+          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.instagram.com/fourve._creates"><i class="bi bi-instagram"></i></a>
+            <a href="www.linkedin.com/company/fourve-studios-and-enterprises"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('team') }}">About us</a></li>
+            <li><a href="{{ url_for('home') }}#services">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="{{ url_for('digital_marketing') }}">Digital Marketing</a></li>
+            <li><a href="{{ url_for('livestreaming') }}">Live Streaming</a></li>
+            <li><a href="{{ url_for('media_production') }}">Media Production</a></li>
+            <li><a href="{{ url_for('event_management') }}">Event Management</a></li>
+            <li><a href="{{ url_for('e_sports') }}">E-Sports</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>Incubation Center</p>
+          <p>Rajagiri College of Management and Applied Sciences</p>
+          <p>Kerala, India</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+91 80869 59419</span></p>
+          <p><strong>Email:</strong> <span>contact@fourve.in</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">FOURVE</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Designed by <a href="https://www.linkedin.com/in/abin-roy-750783293/">Abin Roy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+   {% if request.path == '/' %}
+  <div id="preloader">
+    <video id="preloader-video" autoplay muted loop playsinline>
+      <source src="{{ url_for('static', filename='video/preloader.mov') }}" type="video/quicktime">
+    </video>
+  </div>
+  {% endif %}
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  
+  
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

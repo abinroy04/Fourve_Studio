@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}Service Details - FOURVE Studio{% endblock %}
+{% block description %}Detailed information about our services and how we can help your business grow.{% endblock %}
+{% block keywords %}service details, marketing, digital services, consulting, media, video, photo, videography, photography{% endblock %}
+
+{% block body_class %}service-details-page{% endblock %}
+
+{% block content %}
+
+  <!-- Service Details Section -->
+  <section id="service-details" class="service-details section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row g-5">
+
+        <div class="col-lg-5 order-2 order-lg-1">
+          <div class="sidebar-wrapper" data-aos="fade-right">
+            <div class="service-highlights" data-aos="fade-up" data-aos-delay="100">
+              <h4>Why Choose Us</h4>
+              <div class="highlights-wrapper">
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-award"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Engaging Visual Storytelling</h5>
+                    <p>We craft compelling narratives that keep your audience connected from start to finish.</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-bar-chart"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Powered by Advanced Tech</h5>
+                    <p>Utilizing the latest tools for seamless, high-performance streaming.</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-gear"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Precision in Every Frame</h5>
+                    <p>Meticulous execution ensures nothing is overlooked—visually or technically.</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-clock-history"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Flexible Resolution, No Extra Cost</h5>
+                    <p>Stream in HD, Full HD, or 4K—whatever suits you best, always included.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-action" data-aos="fade-up" data-aos-delay="200">
+              <div class="action-content">
+                <h4>Need Expert Consultation?</h4>
+                <p>Get in touch with our team, let us help you.</p>
+                <a href="{{ url_for('home') }}#contact" class="action-button">Book a Call</a>
+              </div>
+            </div>
+
+<!-- Testimonial Sample
+            <div class="client-testimonial" data-aos="fade-up" data-aos-delay="300">
+              <div class="testimonial-content">
+                <span class="quote-mark"><i class="bi bi-quote"></i></span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo erat at malesuada bibendum. Nullam eu risus.</p>
+                <div class="client-info">
+                  <img src="{{ url_for('static', filename='img/person/person-f-8.webp') }}" alt="Client" class="client-avatar">
+                  <div>
+                    <h6>Anna Martinez</h6>
+                    <span>Marketing Director, CreativeHub</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+-->
+          </div>
+        </div>
+
+        <div class="col-lg-7 order-1 order-lg-2">
+          <div class="service-main" data-aos="fade-left">
+            <div class="service-header">
+              <h1>Fourve Dimensions - Media Production</h1>
+              <p class="lead">We bring your vision to life with stunning visuals and engaging narratives. From conceptualization to post-production, our team ensures every frame speaks volumes.</p>
+            </div>
+
+            <div class="service-content-tabs">
+              <ul class="nav nav-pills mb-4" id="serviceTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#service-details-tab-1" type="button" role="tab" aria-selected="true">
+                    <i class="bi bi-pie-chart"></i> Overview
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#service-details-tab-2" type="button" role="tab" aria-selected="false">
+                    <i class="bi bi-clipboard-data"></i> Strategy
+                  </button>
+                </li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="service-details-tab-1" role="tabpanel">
+                  <div class="tab-image-content">
+                    <img src="https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/media.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvbWVkaWEuanBnIiwiaWF0IjoxNzQ5NjQ2NzA5LCJleHAiOjIwNjUwMDY3MDl9.4qyh28bUdjz4AY8-FNgG4jlXbI_hzvgM-1SUZNtyiV0" alt="Marketing Strategy" class="img-fluid main-image" data-aos="zoom-in">
+                    <div class="content-blocks row g-4 mt-4">
+                      <div class="col-md-6" data-aos="fade-up">
+                        <div class="content-block">
+                          <h4><i class="bi bi-bullseye"></i> Targeted Approach</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo erat at malesuada bibendum. Nullam eu risus sit amet nunc fermentum lacinia.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="content-block">
+                          <h4><i class="bi bi-vector-pen"></i> Creative Solutions</h4>
+                          <p>Phasellus quis erat nibh. Praesent a nibh at eros sodales finibus. Suspendisse potenti. Sed vitae sagittis nulla.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="content-block">
+                          <h4><i class="bi bi-lightning-charge"></i> Fast Implementation</h4>
+                          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam consequat, nulla nec commodo finibus.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="content-block">
+                          <h4><i class="bi bi-clipboard-data"></i> Data-Driven</h4>
+                          <p>Ipsum magna pretium libero, nec commodo finibus ipsum magna pretium. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="service-details-tab-2" role="tabpanel">
+                  <div class="strategy-content">
+                    <div class="row g-4 align-items-center mb-5">
+                      <div class="col-md-6" data-aos="fade-right">
+                        <img src="https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/mediai2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvbWVkaWFpMi5qcGciLCJpYXQiOjE3NDk2NDY3NTksImV4cCI6MjA2NTAwNjc1OX0.IjSLwvK9Gk80Sv7jK1qb2sD4qbuQr2ePcqG1jTrO8ws" alt="Marketing Strategy" class="img-fluid rounded">
+                      </div>
+                      <div class="col-md-6" data-aos="fade-left">
+                        <div class="strategy-text">
+                          <h3>Our Strategic Approach</h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo erat at malesuada bibendum. Nullam eu risus sit amet nunc fermentum lacinia.</p>
+                          <p>Phasellus quis erat nibh. Praesent a nibh at eros sodales finibus. Suspendisse potenti. Sed vitae sagittis nulla.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="strategy-steps" data-aos="fade-up">
+                      <h3 class="section-subtitle">Our Process</h3>
+                      <div class="steps-wrapper">
+                        <div class="step-item" data-aos="fade-up">
+                          <div class="step-number">01</div>
+                          <div class="step-content">
+                            <h4>Planning &amp; Preparation</h4>
+                            <p>Developing the concept, script, schedule, and logistics to set the project up for success.</p>
+                          </div>
+                        </div>
+
+                        <div class="step-item" data-aos="fade-up" data-aos-delay="100">
+                          <div class="step-number">02</div>
+                          <div class="step-content">
+                            <h4>Capturing the Content</h4>
+                            <p>Recording video, audio, and visuals using professional equipment and direction.</p>
+                          </div>
+                        </div>
+
+                        <div class="step-item" data-aos="fade-up" data-aos-delay="200">
+                          <div class="step-number">03</div>
+                          <div class="step-content">
+                            <h4>Editing &amp; Finalizing</h4>
+                            <p>Polishing footage with cuts, sound design, effects, and color correction to create the final product.</p>
+                          </div>
+                        </div>
+
+                        <div class="step-item" data-aos="fade-up" data-aos-delay="300">
+                          <div class="step-number">04</div>
+                          <div class="step-content">
+                            <h4>Distribution</h4>
+                            <p>Distributing the finished content across platforms—optimized for your audience and goals.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="services-packages" data-aos="fade-up" data-aos-delay="100">
+              <h3 class="section-subtitle">Our Services</h3>
+              <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-camera-reels"></i>
+                    </div>
+                    <h4>Video Production</h4>
+                    <p>Telling powerful stories through corporate films, ads, and cinematic shorts.</p>
+                  </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-camera"></i>
+                    </div>
+                    <h4>Photography</h4>
+                    <p>Capturing every detail with stunning event, product, and portrait photography.</p>
+                  </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-cassette"></i>
+                    </div>
+                    <h4>Post-Production</h4>
+                    <p>Polished edits, seamless cuts, and vibrant color grading for a professional finish.</p>
+                  </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-envelope-open-heart"></i>
+                    </div>
+                    <h4> Wedding Films</h4>
+                    <p>Turning your special day into a timeless cinematic experience.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- /Service Details Section -->
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Add any service-details specific CSS here */
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Add any service-details specific JavaScript here if needed
+</script>
+{% endblock %}

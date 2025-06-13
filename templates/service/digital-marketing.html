@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block title %}Service Details - FOURVE Studio{% endblock %}
+{% block description %}Detailed information about our services and how we can help your business grow.{% endblock %}
+{% block keywords %}service details, marketing, digital services, consulting, media, video, photo, videography, photography{% endblock %}
+
+{% block body_class %}service-details-page{% endblock %}
+
+{% block content %}
+
+  <!-- Service Details Section -->
+  <section id="service-details" class="service-details section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row g-5">
+
+        <div class="col-lg-5 order-2 order-lg-1">
+          <div class="sidebar-wrapper" data-aos="fade-right">
+
+            <div class="service-highlights" data-aos="fade-up" data-aos-delay="100">
+              <h4>Why Choose Us</h4>
+              <div class="highlights-wrapper">
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-award"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Industry Expertise</h5>
+                    <p>Experience across diverse industries give us deep insight into what works and how to deliver success.</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-bar-chart"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Detailed Analysis</h5>
+                    <p>We dig deep into data and trends to uncover valuable insights that guide every marketing decision.</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-gear"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Custom Solutions</h5>
+                    <p>Every business is unique—our strategies are tailored to meet your specific goals and challenges.</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-clock-history"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Timely Delivery</h5>
+                    <p>We respect your time and always deliver projects on schedule without compromising quality.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-action" data-aos="fade-up" data-aos-delay="200">
+              <div class="action-content">
+                <h4>Need Expert Consultation?</h4>
+                <p>Get personalized guidance from our specialists to elevate your brand and drive real results.</p>
+                <a href="{{ url_for('home') }}#contact" class="action-button">Book a Call</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7 order-1 order-lg-2">
+          <div class="service-main" data-aos="fade-left">
+            <div class="service-header">
+              <h1>Digital Marketing Excellence</h1>
+              <p class="lead">Our digital marketing services are designed to help your business thrive in the online world. We focus on boosting visibility, driving engagement, and generating leads with creative and strategic approaches.</p>
+            </div>
+
+            <div class="service-content-tabs">
+              <ul class="nav nav-pills mb-4" id="serviceTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#service-details-tab-1" type="button" role="tab" aria-selected="true">
+                    <i class="bi bi-pie-chart"></i> Overview
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#service-details-tab-2" type="button" role="tab" aria-selected="false">
+                    <i class="bi bi-clipboard-data"></i> Strategy
+                  </button>
+                </li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="service-details-tab-1" role="tabpanel">
+                  <div class="tab-image-content">
+                    <img src="{{ url_for('static', filename='img/services/services-5.webp') }}" alt="Marketing Strategy" class="img-fluid main-image" data-aos="zoom-in">
+                    <div class="content-blocks row g-4 mt-4">
+                      <div class="col-md-6" data-aos="fade-up">
+                        <div class="content-block">
+                          <h4><i class="bi bi-bullseye"></i> Targeted Approach</h4>
+                          <p>We focus on reaching the right audience with tailored messaging that maximizes impact and engagement.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="content-block">
+                          <h4><i class="bi bi-vector-pen"></i> Creative Solutions</h4>
+                          <p>Innovative ideas and compelling content that make your brand stand out in a crowded digital space.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="content-block">
+                          <h4><i class="bi bi-lightning-charge"></i> Fast Implementation</h4>
+                          <p>Quick and efficient execution ensures your campaigns go live without delay and stay ahead of trends.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="content-block">
+                          <h4><i class="bi bi-clipboard-data"></i> Data-Driven</h4>
+                          <p>Every decision is backed by analytics, helping us optimize performance and deliver measurable results.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="service-details-tab-2" role="tabpanel">
+                  <div class="strategy-content">
+                    <div class="row g-4 align-items-center mb-5">
+                      <div class="col-md-6" data-aos="fade-right">
+                        <img src="{{ url_for('static', filename='img/services/services-8.webp') }}" alt="Marketing Strategy" class="img-fluid rounded">
+                      </div>
+                      <div class="col-md-6" data-aos="fade-left">
+                        <div class="strategy-text">
+                          <h3>Our Strategic Approach</h3>
+                          <p>Our digital marketing strategy focuses on understanding your brand, audience, and goals to create targeted campaigns that drive results.</p>
+                          <p>By continuously monitoring performance and adapting to market trends, we ensure your marketing stays effective and ahead of the competition.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="strategy-steps" data-aos="fade-up">
+                      <h3 class="section-subtitle">Our Process</h3>
+                      <div class="steps-wrapper">
+                        <div class="step-item" data-aos="fade-up">
+                          <div class="step-number">01</div>
+                          <div class="step-content">
+                            <h4>Planning</h4>
+                            <p>Define your goals, target audience, and marketing channels. This sets the foundation for a focused and strategic campaign.</p>
+                          </div>
+                        </div>
+
+                        <div class="step-item" data-aos="fade-up" data-aos-delay="100">
+                          <div class="step-number">02</div>
+                          <div class="step-content">
+                            <h4>Content Creation</h4>
+                            <p>Develop engaging content such as blogs, videos, ads, and social media posts tailored to your audience’s interests and platform.</p>
+                          </div>
+                        </div>
+
+                        <div class="step-item" data-aos="fade-up" data-aos-delay="200">
+                          <div class="step-number">03</div>
+                          <div class="step-content">
+                            <h4>Implementation</h4>
+                            <p>Launch your marketing campaigns across selected digital channels like social media, email, search engines, or websites.</p>
+                          </div>
+                        </div>
+
+                        <div class="step-item" data-aos="fade-up" data-aos-delay="300">
+                          <div class="step-number">04</div>
+                          <div class="step-content">
+                            <h4>Optimization &amp; Analysis</h4>
+                            <p>Track performance using analytics tools, measure KPIs, and refine strategies to improve results and ROI continuously.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="services-packages" data-aos="fade-up" data-aos-delay="100">
+              <h3 class="section-subtitle">Our Services</h3>
+              <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-megaphone"></i>
+                    </div>
+                    <h4>Social Media Management</h4>
+                    <p>Strategic content planning and community engagement.</p>
+                  </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-search"></i>
+                    </div>
+                    <h4>SEO Optimization</h4>
+                    <p>Improve your website's visibility in search results.</p>
+                  </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-envelope"></i>
+                    </div>
+                    <h4>Email Marketing</h4>
+                    <p>Personalized email campaigns that nurture leads.</p>
+                  </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <h4>PPC Campaigns</h4>
+                    <p>Targeted advertising campaigns that deliver results.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- /Service Details Section -->
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Add any service-details specific CSS here */
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Add any service-details specific JavaScript here if needed
+</script>
+{% endblock %}

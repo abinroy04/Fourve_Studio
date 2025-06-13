@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}Service Details - FOURVE Studio{% endblock %}
+{% block description %}Detailed information about our services and how we can help your business grow.{% endblock %}
+{% block keywords %}service details, marketing, digital services, consulting, media, video, photo, videography, photography{% endblock %}
+
+{% block body_class %}service-details-page{% endblock %}
+
+{% block content %}
+
+  <!-- Service Details Section -->
+  <section id="service-details" class="service-details section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row g-5">
+
+        <div class="col-lg-5 order-2 order-lg-1">
+          <div class="sidebar-wrapper" data-aos="fade-right">
+
+            <div class="service-highlights" data-aos="fade-up" data-aos-delay="100">
+              <h4>Why Choose Us</h4>
+              <div class="highlights-wrapper">
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-people-fill"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Experienced Team</h5>
+                    <p>We bring expertise in managing corporate, cultural, and personal events.</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-claude"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Creative Solutions</h5>
+                    <p>Unique themes and designs tailored to your vision.</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-search"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>Attention to Detail</h5>
+                    <p>Ensuring every element is perfectly executed.</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <div class="highlight-icon">
+                    <i class="bi bi-arrows-angle-contract"></i>
+                  </div>
+                  <div class="highlight-content">
+                    <h5>End-to-End Support</h5>
+                    <p>From planning to execution, we're with you at every step.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-action" data-aos="fade-up" data-aos-delay="200">
+              <div class="action-content">
+                <h4>Need Expert Consultation?</h4>
+                <p>Get in touch with our team, let us help you.</p>
+                <a href="{{ url_for('home') }}#contact" class="action-button">Book a Call</a>
+              </div>
+            </div>
+<!-- Testimonials Section 
+            <div class="client-testimonial" data-aos="fade-up" data-aos-delay="300">
+              <div class="testimonial-content">
+                <span class="quote-mark"><i class="bi bi-quote"></i></span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo erat at malesuada bibendum. Nullam eu risus.</p>
+                <div class="client-info">
+                  <img src="{{ url_for('static', filename='img/person/person-f-8.webp') }}" alt="Client" class="client-avatar">
+                  <div>
+                    <h6>Anna Martinez</h6>
+                    <span>Marketing Director, CreativeHub</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+-->
+          </div>
+        </div>
+
+        <div class="col-lg-7 order-1 order-lg-2">
+          <div class="service-main" data-aos="fade-left">
+            <div class="service-header">
+              <h1>Fourve Events</h1>
+              <p class="lead">Our event management services bring creativity, precision, and seamless execution to every event. From concept planning to the final curtain call, we handle every detail to ensure your event is a resounding success.</p>
+            </div>
+
+            <div class="service-content-tabs">
+              <ul class="nav nav-pills mb-4" id="serviceTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#service-details-tab-1" type="button" role="tab" aria-selected="true">
+                    <i class="bi bi-pie-chart"></i> Overview
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#service-details-tab-2" type="button" role="tab" aria-selected="false">
+                    <i class="bi bi-clipboard-data"></i> Strategy
+                  </button>
+                </li>
+              </ul>
+
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="service-details-tab-1" role="tabpanel">
+                  <div class="tab-image-content">
+                    <img src="{{ url_for('static', filename='img/services/services-5.webp') }}" alt="Marketing Strategy" class="img-fluid main-image" data-aos="zoom-in">
+                    <div class="content-blocks row g-4 mt-4">
+                      <div class="col-md-6" data-aos="fade-up">
+                        <div class="content-block">
+                          <h4><i class="bi bi-bullseye"></i>Strategic Planning</h4>
+                          <p>We meticulously plan every aspect of your event, ensuring it aligns with your goals and delivers a memorable experience from start to finish.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="content-block">
+                          <h4><i class="bi bi-vector-pen"></i>Creative Concepts</h4>
+                          <p>From unique themes to eye-catching décor, we bring fresh, innovative ideas that set your event apart and captivate your audience.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="content-block">
+                          <h4><i class="bi bi-lightning-charge"></i>Swift Execution</h4>
+                          <p>Our team is equipped to execute events efficiently and on schedule, managing every detail with precision and professionalism.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="content-block">
+                          <h4><i class="bi bi-clipboard-data"></i>Insight-Driven Decisions</h4>
+                          <p>We use data and feedback to shape our strategies, improving event outcomes and ensuring your audience is fully engaged.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="service-details-tab-2" role="tabpanel">
+                  <div class="strategy-content">
+                    <div class="row g-4 align-items-center mb-5">
+                      <div class="col-md-6" data-aos="fade-right">
+                        <img src="{{ url_for('static', filename='img/services/services-8.webp') }}" alt="Marketing Strategy" class="img-fluid rounded">
+                      </div>
+                      <div class="col-md-6" data-aos="fade-left">
+                        <div class="strategy-text">
+                          <h3>Our Strategic Approach</h3>
+                          <p>Every event should, in our opinion, have a clear goal, be unforgettable, and be executed flawlessly.</p>
+                          <p>Understanding your goal and target audience is the first step in our process, which is then followed by customized planning and imaginative design. We produce events that surpass expectations and leave a lasting impression by concentrating on faultless execution and quantifiable impact.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="strategy-steps" data-aos="fade-up">
+                      <h3 class="section-subtitle">Our Process</h3>
+                      <div class="steps-wrapper">
+                        <div class="step-item" data-aos="fade-up">
+                          <div class="step-number">01</div>
+                          <div class="step-content">
+                            <h4>Research &amp; Analysis</h4>
+                            <p>We begin by learning about your goals, audience, and brand to craft an event that aligns with your message and delivers the right impact.</p>
+                          </div>
+                        </div>
+
+                        <div class="step-item" data-aos="fade-up" data-aos-delay="100">
+                          <div class="step-number">02</div>
+                          <div class="step-content">
+                            <h4>Strategy Development</h4>
+                            <p>Based on insights, we build a detailed event strategy—covering theme, logistics, technology, and experience design—to ensure every element supports your objectives.</p>
+                          </div>
+                        </div>
+
+                        <div class="step-item" data-aos="fade-up" data-aos-delay="200">
+                          <div class="step-number">03</div>
+                          <div class="step-content">
+                            <h4>Implementation</h4>
+                            <p>Our team handles all aspects of execution, including vendor coordination, venue setup, technical support, and on-site management for a seamless experience.</p>
+                          </div>
+                        </div>
+
+                        <div class="step-item" data-aos="fade-up" data-aos-delay="300">
+                          <div class="step-number">04</div>
+                          <div class="step-content">
+                            <h4>Optimization &amp; Growth</h4>
+                            <p>Post-event, we analyze performance, gather feedback, and provide insights for continuous improvement, helping you grow and refine future events.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+            </div>
+
+            <div class="services-packages" data-aos="fade-up" data-aos-delay="100">
+              <h3 class="section-subtitle">Our Services</h3>
+              <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-megaphone"></i>
+                    </div>
+                    <h4>Event Planning</h4>
+                    <p>From concept to execution, we handle every detail with precision to ensure your event runs smoothly and meets your goals.</p>
+                  </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-search"></i>
+                    </div>
+                    <h4>Venue Management</h4>
+                    <p>We help you find the perfect venue and manage all logistics—from layout to setup—for a seamless event experience.</p>
+                  </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-flower3"></i>
+                    </div>
+                    <h4>Design &amp; Decor</h4>
+                    <p>Our team creates stunning, theme-aligned designs and elegant décor that bring your vision to life and impress every guest.</p>
+                  </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                  <div class="service-package">
+                    <div class="package-icon">
+                      <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <h4>Event Coverage</h4>
+                    <p>We capture and promote your event across social media and other channels, ensuring maximum visibility and engagement.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- /Service Details Section -->
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Add any service-details specific CSS here */
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Add any service-details specific JavaScript here if needed
+</script>
+{% endblock %}

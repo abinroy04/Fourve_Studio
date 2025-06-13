@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}FOURVE Studio - Team{% endblock %}
+{% block description %}FOURVE Studio is a creative design agency specializing in UI/UX design, web development, and digital marketing services.{% endblock %}
+{% block keywords %}design agency, creative studio, UI/UX design, web development{% endblock %}
+
+{% block body_class %}index-page{% endblock %}
+
+{% block content %}
+
+    <!-- Starter Section Section -->
+    <section id="starter-section" class="starter-section section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span class="description-title">The Team</span>
+        <h2>About Us</h2>
+        <p>Meet the creative minds behind FOURVE Studio.</p>
+      </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up">
+    <div class="about-text mt-14 text-center" style="
+    font-size: 1.2rem;
+    background-image: url('{{ url_for('static', filename='img/team/team.webp') }}');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 80px; /* Missing semicolon was here */
+    margin: 0 auto 40px;
+    max-width: 2000px;
+    min-height: 500px; /* Use min-height instead of max-height */
+    border-radius: 8px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    position: relative;
+    ">
+      <!-- Semi-transparent overlay for better text readability -->
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5); border-radius: 8px;"></div>
+      
+      <!-- Text content positioned over the image -->
+      <div style="position: relative; z-index: 2; padding: 20px;">
+        <p>
+          At <strong>Fourve</strong>, we bring stories to life through stunning visuals and creative ideas. From wedding films to advertisements, social media management, and video production, we specialize in capturing moments that matter.
+        </p>
+        <p>
+          As a registered LLP founded by a team of experienced and passionate creators, we are committed to professionalism and excellence. With state-of-the-art equipment, we ensure top-notch quality in every project.
+        </p>
+        <p>
+          Our approach is built on transparency, creativity, and dedication, making us a trusted partner for personal and business needs. Whether you're celebrating a milestone or building your brand, we're here to make it extraordinary.
+        </p>
+        <p>
+          <strong>Let's create something unforgettable together.</strong>
+        </p>
+      </div>
+    </div>
+  </div><!-- End Container -->
+</section><!-- /Starter Section Section -->
+
+
+<!-- Team Section -->
+<section id="team" class="team section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="team-header" data-aos="fade-up" data-aos-delay="200">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h2>Our Professional Team</h2>
+          <p>A collective of creatives, strategists, and technologists — each bringing expertise, passion, and precision to every project we take on.</p>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-lg-end">
+          <div class="team-controls">
+            <button class="team-control-btn team-prev"><i class="bi bi-chevron-left"></i></button>
+            <button class="team-control-btn team-next"><i class="bi bi-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-slider swiper init-swiper" data-aos="fade-up" data-aos-delay="300">
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 700,
+          "autoplay": {
+            "delay": 5000
+          },
+          "slidesPerView": 1,
+          "spaceBetween": 30,
+          "navigation": {
+            "nextEl": ".team-next",
+            "prevEl": ".team-prev"
+          },
+          "breakpoints": {
+            "576": {
+              "slidesPerView": 2,
+              "spaceBetween": 20
+            },
+            "992": {
+              "slidesPerView": 3,
+              "spaceBetween": 30
+            },
+            "1200": {
+              "slidesPerView": 4,
+              "spaceBetween": 30
+            }
+          }
+        }
+      </script>
+      <div class="swiper-wrapper">
+        {%for member in team_members %}
+        <div class="swiper-slide">
+          <div class="team-member">
+            <div class="member-image">
+              <img src="{{ url_for('static', filename=member.image) }}" class="img-fluid" alt="{{ member.name }}" loading="lazy">
+              <div class="member-social">
+                <a href="{{member.instagram}}" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
+                <a href="{{member.linkedin}}" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-content">
+              <h3>{{member.name}}</h3>
+              <span>{{member.role}}</span>
+              <p>{{member.description}}</p>
+            </div>
+          </div>
+        </div><!-- End slide item -->
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section><!-- /Team Section -->
+
+{% endblock %}

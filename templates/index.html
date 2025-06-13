@@ -1,0 +1,970 @@
+{% extends "base.html" %}
+
+{% block title %}FOURVE Studios and Enterprises LLP{% endblock %}
+{% block description %}FOURVE Studio is a creative design agency specializing in UI/UX design, web development, and digital marketing services.{% endblock %}
+{% block keywords %}design agency, creative studio, UI/UX design, web development, photography, videography, photo, video, marketing, digital_marketing{% endblock %}
+
+{% block body_class %}index-page{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="hero" class="hero section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 hero-content" data-aos="fade-up" data-aos-delay="100">
+        <div class="subtitle">
+          <span>FOURVE STUDIOS AND ENTERPRISES</span>
+        </div>
+
+        <h1 class="title">
+          INSPIRE <span class="highlight">THROUGH</span> DESIGN
+        </h1>
+
+        <div class="description">
+          <p>We are a multidisciplinary creative studio shaping ideas into powerful visual experiences. From branding and UI/UX to web development, photography, video production, and digital marketing — Fourve Studios brings design and strategy together to elevate your brand in every pixel and frame.</p>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#services" class="primary-btn">
+            Our Services
+            <i class="bi bi-chevron-right"></i>
+          </a>
+          <a href="#portfolio" class="secondary-btn">
+            View Portfolio
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 hero-visual" data-aos="fade-up" data-aos-delay="200">
+        <div class="image-wrapper">
+          <img src="{{ url_for('static', filename='img/misc/misc-square-16.webp') }}" alt="Creative Design" class="main-image">
+
+          <div class="floating-element top-left">
+            <i class="bi bi-star-fill"></i>
+          </div>
+
+          <div class="floating-element bottom-right">
+            <i class="bi bi-circle-fill"></i>
+          </div>
+
+          <div class="experience-badge">
+            <span class="years">0.20+</span>
+            <span class="text">Years of Experience</span>
+          </div>
+        </div>
+
+        <div class="client-counter">
+          <div class="counter-number">
+            <span>10+</span>
+          </div>
+          <div class="counter-text">
+            <span>Happy Clients</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- /Hero Section -->
+
+<!-- About Section -->
+<section id="about" class="about section light-background">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <span class="description-title">About</span>
+    <h2>About</h2>
+    <p>We’re a creative studio crafting impactful design, digital experiences, and visual content that inspires.</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="about-image-wrapper position-relative">
+          <img src="{{ url_for('static', filename='img/about/about-8.webp') }}" alt="About Us" class="img-fluid rounded-4">
+          <div class="mission-card">
+            <div class="mission-icon">
+              <i class="bi bi-lightbulb"></i>
+            </div>
+            <div class="mission-content">
+              <h4>Our Purpose</h4>
+              <p>Focus on delivering creative solutions that empower businesses to grow and succeed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="about-content ps-lg-4">
+          <div class="tag-badge" data-aos="fade-up" data-aos-delay="100">COMPANY OVERVIEW</div>
+          <h2 class="mb-4" data-aos="fade-up" data-aos-delay="200">Discover our journey and future aspirations towards innovation and success</h2>
+
+          <div class="about-info" data-aos="fade-up" data-aos-delay="300">
+            <p>Explore how we have developed our unique approach to tackle complex challenges and provide exceptional service across various industries. Our dedicated team works tirelessly to ensure client satisfaction.</p>
+            <p>Through continuous learning and adaptation, we strive to stay at the forefront of technology and market trends, ensuring our solutions are always relevant and effective.</p>
+          </div>
+
+          <h4 class="values-title mt-4 mb-3" data-aos="fade-up" data-aos-delay="400">Fundamental Principles</h4>
+
+          <div class="values-list" data-aos="fade-up" data-aos-delay="500">
+            <div class="value-item">
+              <div class="value-icon"><i class="bi bi-check2"></i></div>
+              <span class="value-text">Trustworthiness</span>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="bi bi-check2"></i></div>
+              <span class="value-text">Quality</span>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="bi bi-check2"></i></div>
+              <span class="value-text">Creativity</span>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="bi bi-check2"></i></div>
+              <span class="value-text">Response</span>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="bi bi-check2"></i></div>
+              <span class="value-text">Collaboration</span>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="bi bi-check2"></i></div>
+              <span class="value-text">Growth Mindset</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /About Section -->
+
+<!-- Stats Section -->
+<section id="stats" class="stats section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="stats-wrapper">
+          <div class="stats-item" data-aos="zoom-in" data-aos-delay="150">
+            <div class="icon-wrapper">
+              <i class="bi bi-emoji-smile"></i>
+            </div>
+            <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Happy Clients</p>
+          </div><!-- End Stats Item -->
+
+          <div class="stats-item" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-wrapper">
+              <i class="bi bi-journal-richtext"></i>
+            </div>
+            <span data-purecounter-start="0" data-purecounter-end="76" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Projects</p>
+          </div><!-- End Stats Item -->
+
+          <div class="stats-item" data-aos="zoom-in" data-aos-delay="250">
+            <div class="icon-wrapper">
+              <i class="bi bi-headset"></i>
+            </div>
+            <span data-purecounter-start="0" data-purecounter-end="143" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hours Of Support</p>
+          </div><!-- End Stats Item -->
+
+          <div class="stats-item" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-wrapper">
+              <i class="bi bi-people"></i>
+            </div>
+            <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hard Workers</p>
+          </div><!-- End Stats Item -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Stats Section -->
+
+<!-- Services Section -->
+<section id="services" class="services section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <span class="description-title">Services</span>
+    <h2>Services</h2>
+    <p>From design to digital, we offer creative solutions that bring your ideas to life across web, media, and marketing.</p>
+  </div><!-- End Section Title -->
+</section><!-- /Services Section -->
+
+<!-- Features Alt Section -->
+<section id="features-alt" class="features-alt section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <ul class="nav nav-tabs flex-column" role="tablist" data-aos="fade-right" data-aos-delay="200">
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#fourve-broadcasting" role="tab">
+              <div class="d-flex align-items-center">
+                <div class="icon-box">
+                  <i class="bi bi-camera"></i>
+                </div>
+                <div class="ms-3">
+                  <h4>Live Streaming</h4>
+                  <p>Taking Your Message to the World</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#fourve-dimension" role="tab">
+              <div class="d-flex align-items-center">
+                <div class="icon-box">
+                  <i class="bi bi-cassette"></i>
+                </div>
+                <div class="ms-3">
+                  <h4>Media Production</h4>
+                  <p>Visual Storytelling at Its Best</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#fourve-digital" role="tab">
+              <div class="d-flex align-items-center">
+                <div class="icon-box">
+                  <i class="bi bi-megaphone"></i>
+                </div>
+                <div class="ms-3">
+                  <h4>Digital Marketing</h4>
+                  <p>Strategic Digital Marketing for Modern Businesses</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#fourve-events" role="tab">
+              <div class="d-flex align-items-center">
+                <div class="icon-box">
+                  <i class="bi bi-person-heart"></i>
+                </div>
+                <div class="ms-3">
+                  <h4>Event Management</h4>
+                  <p>Creating Experiences That Last a Lifetime</p>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+          <div class="tab-pane fade active show" id="fourve-broadcasting" role="tabpanel">
+            <div class="content-box">
+              <div class="row g-4">
+                <div class="col-lg-6">
+                  <h3>Fourve Broadcasting</h3>
+                  <p>We provide top-tier broadcasting services for live events, webinars, corporate meetings, and more. 
+                     With state-of-the-art equipment and skilled professionals, we ensure seamless delivery and unparalleled audience engagement.</p>
+                  
+                  <ul class="features-list">
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Live Event Streaming</span>
+                      <p>Professional streaming solutions for events of any scale</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Corporate Broadcasting</span>
+                      <p>Secure and reliable corporate communication solutions</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Webinars & Conferences</span>
+                      <p>End-to-end online conference management</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Content Creation</span>
+                      <p>TV and radio content production services</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <div class="image-box">
+                    <img src="{{ url_for('static', filename='img/misc/misc-square-6.webp') }}" alt="" class="img-fluid" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="fourve-dimension" role="tabpanel">
+            <div class="content-box">
+              <div class="row g-4">
+                <div class="col-lg-6">
+                  <h3>Fourve Dimension</h3>
+                  <p>We bring your vision to life with stunning visuals and engaging narratives. 
+                    From conceptualization to post-production, our team ensures every frame speaks volumes.</p>
+          
+                  <ul class="features-list">
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Video Production</span>
+                      <p>Corporate videos, advertisements, and short films</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Photography</span>
+                      <p>Event, product, and portrait photography</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Post-Production</span>
+                      <p>Professional editing and color grading</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Wedding Films</span>
+                      <p>Cinematic wedding videography</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <div class="image-box">
+                    <img src="{{ url_for('static', filename='img/misc/misc-square-13.webp') }}" alt="" class="img-fluid" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="fourve-digital" role="tabpanel">
+            <div class="content-box">
+              <div class="row g-4">
+                <div class="col-lg-6">
+                  <h3>Fourve Digital</h3>
+                  <p>Our digital marketing services are designed to help your business thrive in the online world. 
+                    We focus on boosting visibility, driving engagement, and generating leads with creative and strategic approaches.</p>
+                  
+                  <ul class="features-list">
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Social Media Management</span>
+                      <p>Strategic content planning and community engagement</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Search Engine Optimization</span>
+                      <p>Improve your website's visibility in search results</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Content Marketing</span>
+                      <p>Engaging content that converts visitors into customers</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>PPC Campaigns</span>
+                      <p>Targeted advertising campaigns that deliver results</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <div class="image-box">
+                    <img src="{{ url_for('static', filename='img/misc/misc-square-3.webp') }}" alt="" class="img-fluid" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="fourve-events" role="tabpanel">
+            <div class="content-box">
+              <div class="row g-4">
+                <div class="col-lg-6">
+                  <h3>Fourve Events</h3>
+                  <p>Our event management services bring creativity, precision, and seamless execution to every event. 
+                    From concept planning to the final curtain call, we handle every detail to ensure your event is a resounding success.</p>
+                  
+                  <ul class="features-list">
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Event Planning</span>
+                      <p>Comprehensive planning and coordination services</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Venue Management</span>
+                      <p>Strategic venue selection and professional setup</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Design & Décor</span>
+                      <p>Creative thematic design and elegant décor solutions</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Technical Support</span>
+                      <p>Complete audio-visual and technical assistance</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Guest Management</span>
+                      <p>Professional invitation and guest coordination services</p>
+                    </li>
+                    <li>
+                      <i class="bi bi-check2-circle"></i>
+                      <span>Event Coverage</span>
+                      <p>Comprehensive event promotion and social media coverage</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <div class="image-box">
+                    <img src="{{ url_for('static', filename='img/misc/misc-square-5.webp') }}" alt="" class="img-fluid" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- /Features Alt Section -->
+
+<!-- Call To Action Section -->
+<section id="call-to-action" class="call-to-action section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="cta-wrapper">
+      <div class="cta-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-lg-7">
+          <div class="cta-content p-5" data-aos="fade-right" data-aos-delay="200">
+            <h2 class="mt-4 mb-4">Get in contact with us and let us help you through your journey</h2>
+            <p class="mb-4">We're here to collaborate, create, and bring your vision to life — reach out and let’s get started.</p>
+
+            <div class="row benefits-row mb-5">
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="benefit-item">
+                  <div class="icon-box">
+                    <i class="bi bi-person-arms-up"></i>
+                  </div>
+                  <div class="benefit-content">
+                    <h5>Ease of mind</h5>
+                    <p>We handle the details so you can focus on the bigger picture — stress-free, start to finish.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="benefit-item">
+                  <div class="icon-box">
+                    <i class="bi bi-shield-check"></i>
+                  </div>
+                  <div class="benefit-content">
+                    <h5>24/7 Support</h5>
+                    <p>Our dedicated team is always ready to attend to any of your queries and issues</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <a href="{{ url_for('home') }}#contact" class="btn btn-primary" data-aos="fade-up" data-aos-delay="300">Get in Touch</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="cta-image-container" data-aos="zoom-in" data-aos-delay="300">
+            <img src="{{ url_for('static', filename='img/illustration/illustration-3.webp') }}" alt="Illustration" class="img-fluid main-image">
+            <div class="floating-element element-1">
+              <i class="bi bi-star-fill"></i>
+              <span>4.9 Rating</span>
+            </div>
+            <div class="floating-element element-2">
+              <i class="bi bi-people-fill"></i>
+              <span>15+ Customers</span>
+            </div>
+            <div class="pattern-dots"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Call To Action Section -->
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <span class="description-title">Portfolio</span>
+    <h2>Portfolio</h2>
+    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row">
+      <div class="col-lg-3 filter-sidebar">
+        <div class="filters-wrapper" data-aos="fade-right" data-aos-delay="150">
+          <ul class="portfolio-filters">
+            <li class="filter-item active" data-filter="all">All Projects</li>
+            {% if port_filter.photograhy %}
+            <li class="filter-item" data-filter="photography">Photography</li>
+            {% endif %}
+            {% if port_filter.videography %}
+            <li class="filter-item" data-filter="videography">Videography</li>
+            {% endif %}
+            {% if port_filter.live_streaming %}
+            <li class="filter-item" data-filter="live-streaming">Live Streaming</li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-9">
+        <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          
+          <!-- Display photography items -->
+          {% if port_filter.photograhy %}
+            {% for image_url in port_filter.photograhy %}
+            <div class="col-lg-4 col-md-6 portfolio-item photography">
+              <div class="portfolio-content">
+                <img src="{{ image_url }}" class="img-fluid" alt="Photography Portfolio Item">
+                <div class="portfolio-info">
+                  <h4>Photography Project</h4>
+                  <p>Professional photography services</p>
+                  <a href="{{ image_url }}" title="Photography Project" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          {% endif %}
+
+          <!-- Display videography items -->
+          {% if port_filter.videography %}
+            {% for video_url in port_filter.videography %}
+            <div class="col-lg-4 col-md-6 portfolio-item videography">
+              <div class="portfolio-content video-embed">
+                {% if 'instagram.com' in video_url %}
+                  {% set instagram_id = video_url.split('/')[-2] %}
+                  <!-- Instagram embed iframe -->
+                  <iframe class="instagram-embed" src="https://www.instagram.com/p/{{ instagram_id }}/embed/" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <h4>Instagram Video</h4>
+                      <p>Professional video production</p>
+                      <a href="{{ video_url }}" title="Videography Project" class="external-link" target="_blank"><i class="bi bi-instagram"></i> View on Instagram</a>
+                    </div>
+                  </div>
+                {% else %}
+                  <img src="{{ url_for('static', filename='img/misc/misc-square-13.webp') }}" class="img-fluid" alt="Video Thumbnail">
+                  <div class="portfolio-info">
+                    <h4>Videography Project</h4>
+                    <p>Professional video production</p>
+                    <a href="{{ video_url }}" title="Videography Project" class="glightbox preview-link"><i class="bi bi-play-circle"></i></a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          {% endif %}
+          
+          <!-- Display live streaming items -->
+          {% if port_filter.live_streaming %}
+            {% for stream_url in port_filter.live_streaming %}
+            <div class="col-lg-4 col-md-6 portfolio-item live-streaming">
+              <div class="portfolio-content video-embed">
+                {% if 'youtube.com' in stream_url or 'youtu.be' in stream_url %}
+                  {% if 'youtube.com/watch?v=' in stream_url %}
+                    {% set video_id = stream_url.split('watch?v=')[1].split('&')[0] %}
+                  {% elif 'youtu.be/' in stream_url %}
+                    {% set video_id = stream_url.split('youtu.be/')[1].split('?')[0] %}
+                  {% else %}
+                    {% set video_id = '' %}
+                  {% endif %}
+                  <!-- YouTube embed iframe -->
+                  <iframe class="youtube-embed" src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <h4>YouTube Stream</h4>
+                      <p>Professional streaming services</p>
+                      <a href="{{ stream_url }}" title="YouTube Video" class="external-link" target="_blank"><i class="bi bi-youtube"></i> Watch on YouTube</a>
+                    </div>
+                  </div>
+                {% else %}
+                  <img src="{{ url_for('static', filename='img/misc/misc-square-6.webp') }}" class="img-fluid" alt="Live Streaming Portfolio Item">
+                  <div class="portfolio-info">
+                    <h4>Live Streaming</h4>
+                    <p>Professional streaming services</p>
+                    <a href="{{ stream_url }}" title="Live Streaming Project" class="glightbox preview-link"><i class="bi bi-play-circle"></i></a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          {% endif %}
+
+        </div><!-- End Portfolio Container -->
+      </div>
+    </div>
+  </div>
+  
+
+
+  <!-- Add enhanced JavaScript for overlay interactions -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Existing filter code
+      const filterItems = document.querySelectorAll('.filter-item');
+      const portfolioItems = document.querySelectorAll('.portfolio-item');
+      
+      // Add click event to each filter item
+      filterItems.forEach(item => {
+        item.addEventListener('click', function() {
+          // Remove active class from all items
+          filterItems.forEach(filter => filter.classList.remove('active'));
+          
+          // Add active class to clicked item
+          this.classList.add('active');
+          
+          // Get filter value
+          const filterValue = this.getAttribute('data-filter');
+          
+          // Show/hide portfolio items based on filter
+          portfolioItems.forEach(portfolioItem => {
+            if (filterValue === 'all' || portfolioItem.classList.contains(filterValue)) {
+              portfolioItem.style.display = 'block';
+            } else {
+              portfolioItem.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Handle thumbnail errors
+      document.querySelectorAll('.portfolio-content img').forEach(img => {
+        img.addEventListener('error', function() {
+          // If thumbnail fails to load, use category-specific fallback
+          const portfolioItem = this.closest('.portfolio-item');
+          if (portfolioItem.classList.contains('videography')) {
+            this.src = "{{ url_for('static', filename='img/misc/misc-square-13.webp') }}";
+          } else if (portfolioItem.classList.contains('live-streaming')) {
+            this.src = "{{ url_for('static', filename='img/misc/misc-square-6.webp') }}";
+          } else {
+            this.src = "{{ url_for('static', filename='img/misc/misc-square-16.webp') }}";
+          }
+        });
+      });
+
+      // Pause videos when clicking away
+      document.querySelectorAll('.filter-item').forEach(item => {
+        item.addEventListener('click', function() {
+          // Pause all YouTube videos when filtering
+          document.querySelectorAll('.youtube-embed').forEach(iframe => {
+            const src = iframe.src;
+            iframe.src = src; // Resetting src stops the video
+          });
+        });
+      });
+      
+      // Fix external links in overlays
+      document.querySelectorAll('.external-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+          // Prevent the click from bubbling to parent elements
+          event.stopPropagation();
+          
+          // Open link in new tab
+          window.open(this.href, '_blank');
+        });
+      });
+      
+      // Ensure overlays handle clicks properly
+      document.querySelectorAll('.portfolio-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(event) {
+          // Stop propagation to prevent triggering iframe clicks
+          event.stopPropagation();
+        });
+      });
+      
+      // Enable pointer events on iframe only when directly clicking on it
+      document.querySelectorAll('.portfolio-content.video-embed').forEach(content => {
+        content.addEventListener('click', function(event) {
+          // Check if we're clicking on the iframe directly
+          if (event.target.tagName.toLowerCase() === 'iframe') {
+            event.target.style.pointerEvents = 'auto';
+          }
+        });
+      });
+    });
+  </script>
+</section><!-- /Portfolio Section -->
+
+<!-- Contact Section -->
+<section id="contact" class="contact section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <span class="description-title">GET IN TOUCH</span>
+    <h2>Contact</h2>
+    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="contact-info-panel">
+        <div class="contact-info-header">
+          <h3>Contact Information</h3>
+          <p>Dignissimos deleniti accusamus rerum voluptate. Dignissimos rerum sit maiores reiciendis voluptate inventore ut.</p>
+        </div>
+
+        <div class="contact-info-cards">
+          <div class="info-card">
+            <div class="icon-container">
+              <i class="bi bi-pin-map-fill"></i>
+            </div>
+            <div class="card-content">
+              <h4>Our Location</h4>
+              <p>Incubation Center, Rajagiri College of Management and Applied Sciences</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="icon-container">
+              <i class="bi bi-envelope-open"></i>
+            </div>
+            <div class="card-content">
+              <h4>Email Us</h4>
+              <p>contact@fourve.in</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="icon-container">
+              <i class="bi bi-telephone-fill"></i>
+            </div>
+            <div class="card-content">
+              <h4>Call Us</h4>
+              <p>+91 80869 59419</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="icon-container">
+              <i class="bi bi-clock-history"></i>
+            </div>
+            <div class="card-content">
+              <h4>Working Hours</h4>
+              <p>Monday - Saturday: 9AM - 9PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links-panel">
+          <h5>Follow Us</h5>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/fourve._creates/"><i class="bi bi-instagram"></i></a>
+            <a href="www.linkedin.com/company/fourve-studios-and-enterprises"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-panel">
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.2678191787268!2d76.3553208746577!3d9.994722090110418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d5991771765%3A0x3ae2017fa74af5d7!2sRajagiri%20College%20of%20Management%20and%20Applied%20Sciences!5e0!3m2!1sen!2sin!4v1749471514133!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="form-container">
+          <h3>Send Us a Message</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit mauris hendrerit faucibus imperdiet nec eget felis.</p>
+
+          <form id="contactForm" action="{{ url_for('submit_contact') }}" method="post" class="php-email-form">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="nameInput" name="name" placeholder="Full Name" required>
+              <label for="nameInput">Full Name</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="emailInput" name="email" placeholder="Email Address" required>
+              <label for="emailInput">Email Address</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="subjectInput" name="subject" placeholder="Subject" required>
+              <label for="subjectInput">Subject</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <textarea class="form-control" id="messageInput" name="message" rows="5" placeholder="Your Message" style="height: 150px" required></textarea>
+              <label for="messageInput">Your Message</label>
+            </div>
+
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn-submit">Send Message <i class="bi bi-send-fill ms-2"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- /Contact Section -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Contact form AJAX handling
+  const contactForm = document.getElementById('contactForm');
+  
+  if (contactForm) {
+    // Using addEventListener instead of onsubmit
+    contactForm.addEventListener('submit', function(e) {
+      // Make sure to prevent default at the beginning
+      e.preventDefault();
+      console.log("Form submission intercepted");
+      
+      const submitButton = this.querySelector('button[type="submit"]');
+      const loadingIndicator = this.querySelector('.loading');
+      const errorMessage = this.querySelector('.error-message');
+      const sentMessage = this.querySelector('.sent-message');
+      
+      // Reset states
+      errorMessage.style.display = 'none';
+      sentMessage.style.display = 'none';
+      submitButton.disabled = true;
+      loadingIndicator.style.display = 'block';
+      
+      // Collect form data
+      const formData = new FormData(this);
+      
+      // Log the form data for debugging
+      console.log("Sending form data to:", this.action);
+      
+      // Send form data via AJAX with FETCH API
+      fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      })
+      .then(response => {
+        console.log("Response received:", response);
+        return response.json();
+      })
+      .then(data => {
+        console.log("Data received:", data);
+        
+        loadingIndicator.style.display = 'none';
+        
+        if (data.success) {
+          sentMessage.textContent = data.message;
+          sentMessage.style.display = 'block';
+          
+          // Create a flash message at the top of the page
+          createFlashMessage(data.message, 'success');
+          
+          // Reset form
+          contactForm.reset();
+        } else {
+          errorMessage.textContent = data.message;
+          errorMessage.style.display = 'block';
+          
+          // Create a flash message at the top of the page
+          createFlashMessage(data.message, 'error');
+        }
+        
+        submitButton.disabled = false;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        loadingIndicator.style.display = 'none';
+        errorMessage.textContent = 'An unexpected error occurred. Please try again later.';
+        errorMessage.style.display = 'block';
+        submitButton.disabled = false;
+        
+        // Create a flash message at the top of the page
+        createFlashMessage('An unexpected error occurred. Please try again later.', 'error');
+      });
+    });
+  }
+  
+  // Function to create and show a flash message
+  function createFlashMessage(message, type) {
+    // Create the flash message container if it doesn't exist
+    let flashContainer = document.getElementById('flash-messages');
+    
+    if (!flashContainer) {
+      flashContainer = document.createElement('div');
+      flashContainer.id = 'flash-messages';
+      flashContainer.style.position = 'fixed';
+      flashContainer.style.top = '20px';
+      flashContainer.style.left = '50%';
+      flashContainer.style.transform = 'translateX(-50%)';
+      flashContainer.style.zIndex = '9999';
+      flashContainer.style.width = 'auto';
+      flashContainer.style.minWidth = '300px';
+      flashContainer.style.maxWidth = '80%';
+      flashContainer.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+      document.body.appendChild(flashContainer);
+    }
+    
+    // Create the message element
+    const flashMessage = document.createElement('div');
+    flashMessage.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show`;
+    flashMessage.role = 'alert';
+    flashMessage.style.marginBottom = '10px';
+    flashMessage.style.padding = '15px 20px';
+    flashMessage.style.borderRadius = '5px';
+    
+    // Add message content
+    flashMessage.innerHTML = `
+      <strong>${type === 'success' ? 'Success!' : 'Error!'}</strong> ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+    
+    // Add to container
+    flashContainer.appendChild(flashMessage);
+    
+    // Add click event to close button
+    const closeButton = flashMessage.querySelector('.btn-close');
+    if (closeButton) {
+      closeButton.addEventListener('click', function() {
+        flashMessage.classList.remove('show');
+        setTimeout(() => {
+          flashContainer.removeChild(flashMessage);
+        }, 300);
+      });
+    }
+    
+    // Auto-dismiss after 5 seconds
+    setTimeout(() => {
+      if (flashMessage && flashMessage.parentNode) {
+        flashMessage.classList.remove('show');
+        setTimeout(() => {
+          if (flashMessage && flashMessage.parentNode) {
+            flashContainer.removeChild(flashMessage);
+          }
+        }, 300);
+      }
+    }, 5000);
+  }
+});
+</script>
+{% endblock %}
