@@ -28,15 +28,42 @@
   <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
 
   <style>
-  /* Increase logo size */
   .logo img {
-    width: 60px; /* Adjust this value as needed */
+    width: 60px;
     height: auto;
     max-height: none;
   }
   
   .header .logo {
     padding: 10px 0;
+  }
+
+  /* Override the existing dropdown styles to enable hover */
+  .mobile-nav-active .navmenu .dropdown:hover > ul {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: var(--nav-dropdown-background-color) !important;
+    border: 1px solid color-mix(in srgb, var(--nav-dropdown-color), transparent 90%) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  /* Keep dropdown open when hovering over submenu items */
+  .mobile-nav-active .navmenu .dropdown ul:hover {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important; 
+  } 
+
+  /* Arrow rotation on hover */
+  .mobile-nav-active .navmenu .dropdown:hover .toggle-dropdown {
+    transform: rotate(180deg) !important;
+    transition: transform 0.3s ease !important; 
+  }
+
+  /* Smooth transition for all dropdown states */
+  .navmenu .dropdown ul {
+    transition: all 0.3s ease !important;
   }
   </style>
 
@@ -66,6 +93,7 @@
             </ul>
           </li>
           <li><a href="{{ url_for('home') }}#contact">Contact</a></li>
+          <li><a href="{{ url_for('e_sports') }}">E-Sports</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -81,9 +109,8 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="{{ url_for('home') }}" class="logo d-flex align-items-center">
-            <span class="sitename">FOURVE</span>
+            <span class="sitename">FOURVE Studios and Enterprises LLP</span>
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
           <div class="social-links d-flex mt-4">
             <a href="https://www.instagram.com/fourve._creates"><i class="bi bi-instagram"></i></a>
             <a href="www.linkedin.com/company/fourve-studios-and-enterprises"><i class="bi bi-linkedin"></i></a>
@@ -96,8 +123,6 @@
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('team') }}">About us</a></li>
             <li><a href="{{ url_for('home') }}#services">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
           </ul>
         </div>
 

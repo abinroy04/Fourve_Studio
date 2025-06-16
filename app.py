@@ -36,13 +36,9 @@ def event_management():
 
 @app.route('/fourve-e-sports')
 def e_sports():
-    return render_template('    e-sports.html')
+    return render_template('esports.html')
 
-"""
-@app.route('/join-us')
-def join(): 
-    return render_template('join.html')
-"""
+
 
 # Index page things
     #portfolio pages sorting
@@ -55,7 +51,8 @@ port_filter = {
     "videography":
     [
         "https://www.instagram.com/p/C6y0NHYSLVQ/",
-        "https://www.instagram.com/p/C_YYqc-SeI8/"
+        "https://www.instagram.com/p/C_YYqc-SeI8/",
+        "https://drive.google.com/file/d/1Rtzpx2axoRKfm32Se6uzSKZU5lUxfC5R/preview"
     ],
     "live_streaming":
     [
@@ -101,7 +98,7 @@ team_members = [
         "name": "Abin Roy",
         "role": "Lead Developer",
         "image": "img/team/AbinR.webp",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec.",
+        "description": "Dedicated Developer with experience in full-stack development, API integration, and database design. Passionate about creating impactful digital solutions.",
         "instagram": "https://www.instagram.com/alen.tkoshy/",
         "linkedin": "https://www.linkedin.com/in/abin-roy-750783293/"
     },
