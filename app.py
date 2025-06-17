@@ -39,14 +39,23 @@ def e_sports():
     return render_template('esports.html')
 
 
-
 # Index page things
     #portfolio pages sorting
 port_filter = {
     "photograhy": 
     [
-        "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/misc-square-5.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvbWlzYy1zcXVhcmUtNS53ZWJwIiwiaWF0IjoxNzQ5NDY2MDQ4LCJleHAiOjE3ODEwMDIwNDh9.f4E0ugE2eY7CAuG-Xa9_RVEL8HGK3l0GC0xgVuUP_Aw",
-        "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/misc-square-16.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pb3Rmb2xpby1pbWFnZXMvbWlzYy1zcXVhcmUtMTYud2VicCIsImlhdCI6MTc0OTQ2NDY2NywiZXhwIjoxNzgxMDAwNjY3fQ.Hc7Q4Ci6jR6xDSqrMzApWLBieugKVIP4b57mb-_eLJI"
+        "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/misc-square-5.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pb3Rmb2xpby1pbWFnZXMvbWlzYy1zcXVhcmUtNS53ZWJwIiwiaWF0IjoxNzQ5NDY2MDQ4LCJleHAiOjE3ODEwMDIwNDh9.f4E0ugE2eY7CAuG-Xa9_RVEL8HGK3l0GC0xgVuUP_Aw",
+        "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/misc-square-16.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pb3Rmb2xpby1pbWFnZXMvbWlzYy1zcXVhcmUtMTYud2VicCIsImlhdCI6MTc0OTQ2NDY2NywiZXhwIjoxNzgxMDAwNjY3fQ.Hc7Q4Ci6jR6xDSqrMzApWLBieugKVIP4b57mb-_eLJI",
+        {
+            "title": "Save The Date",
+            "images": 
+            [
+                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/temp.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvdGVtcC5wbmciLCJpYXQiOjE3NTAwNzM1MTksImV4cCI6MTc1MDY3ODMxOX0.1tRMEhVcy8nLcky2DudzXBoQKIUAB6PdHken3qdz85s",
+                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/tempo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvdGVtcG8ucG5nIiwiaWF0IjoxNzUwMDczNTMyLCJleHAiOjE3NTA2NzgzMzJ9.UZCL3VFVmVPYEDyfzwpsfeV8mcVqJ1r1u4rSWDE2Tiw",
+                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/temp%20again.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvdGVtcCBhZ2Fpbi5wbmciLCJpYXQiOjE3NTAwNzM1NTMsImV4cCI6MTc1MDY3ODM1M30.t8bgSxs4BEDOEKOAtBis_LY2HS8ql7oZ0ma7Nrt2fDE",
+                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/temp%20again%20huh.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvdGVtcCBhZ2FpbiBodWgucG5nIiwiaWF0IjoxNzUwMDczNTYxLCJleHAiOjE3NTA2NzgzNjF9.793UQ2NSf1sq-R5F6xfiaVoQczqgPnfVJ3c6ErVqSgw"
+            ]
+        }
     ],
     "videography":
     [
@@ -57,7 +66,11 @@ port_filter = {
     "live_streaming":
     [
         "https://www.youtube.com/watch?v=iOgc_cjoILk&t=2s"
-    ]
+    ],
+    "digital_marketing":
+    [
+        "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/Rewago.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvUmV3YWdvLnBuZyIsImlhdCI6MTc1MDA3MTg4NSwiZXhwIjoyMDY1NDMxODg1fQ.Ur3vNlz4fU2UD0eaoNgtIHNHVZXsFBCpJFuVS7XYsWI"
+    ],
 }
 
 # Team page things
@@ -66,7 +79,7 @@ team_members = [
         "name": "Alen T Koshy",
         "role": "Cheif Executive Officer",
         "image": "img/team/Alen_T_Koshy.webp",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec.",
+        "description": "Team lead at Fourve, blending digital marketing, video editing, drones, esports, and storytelling with impact.",
         "instagram": "https://www.instagram.com/alen.tkoshy/",
         "linkedin": "https://www.linkedin.com/in/alen-t-koshy-71535821b/"
     },
@@ -82,7 +95,7 @@ team_members = [
         "name": "Shalom Saji John",
         "role": "Chief Marketing Officer",
         "image": "img/team/Shalom.webp",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec.",
+        "description": "Shaping business strategies, building strong client relationships, and unlocking new market opportunities to ensure continuous growth and competitive advantage.",
         "instagram": "https://www.instagram.com/shalomsjohn/",
         "linkedin": "https://www.linkedin.com/in/shalom-saji-john-4a9691275/"
     },
@@ -90,7 +103,7 @@ team_members = [
         "name": "Cyril Luke Anish",
         "role": "Chief Content Officer",
         "image": "img/team/Cyril.webp",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec.",
+        "description": "I'm a graphic designer, cameraman, and editor who loves turning moments into meaningful visuals. At Fourve, I focus on clean, detailed storytelling that brings out the soul in every frame.",
         "instagram": "https://www.instagram.com/ft._cyril/",
         "linkedin": "https://www.linkedin.com/in/cyril-luke-anish-089819271/"
     },

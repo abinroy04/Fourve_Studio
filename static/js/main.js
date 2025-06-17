@@ -259,8 +259,30 @@
         });
       });
 
-      // Handle thumbnail errors
-      document.querySelectorAll('.portfolio-content img').forEach(img => {
+      // Handle YouTube thumbnail fallbacks and clicks
+      document.querySelectorAll('.youtube-thumbnail').forEach(img => {
+        // Handle thumbnail loading errors
+        img.addEventListener('error', function() {
+          const fallbackUrl = this.getAttribute('data-fallback');
+          if (fallbackUrl && this.src !== fallbackUrl) {
+            this.src = fallbackUrl;
+          } else {
+            // Final fallback to default image
+            this.src = "/static/img/misc/misc-square-6.webp";
+          }
+        });
+
+        // Handle thumbnail clicks
+        img.addEventListener('click', function() {
+          const videoUrl = this.getAttribute('data-video-url');
+          if (videoUrl) {
+            window.open(videoUrl, '_blank');
+          }
+        });
+      });
+
+      // Handle thumbnail errors for regular portfolio images
+      document.querySelectorAll('.portfolio-content img:not(.youtube-thumbnail)').forEach(img => {
         img.addEventListener('error', function() {
           // If thumbnail fails to load, use category-specific fallback
           const portfolioItem = this.closest('.portfolio-item');
@@ -274,7 +296,7 @@
         });
       });
 
-      // Pause videos when clicking away
+      // Pause videos when clicking away (for iframe embeds)
       document.querySelectorAll('.filter-item').forEach(item => {
         item.addEventListener('click', function() {
           // Pause all YouTube videos when filtering
@@ -299,23 +321,199 @@
       // Ensure overlays handle clicks properly
       document.querySelectorAll('.portfolio-overlay').forEach(overlay => {
         overlay.addEventListener('click', function(event) {
-          // Stop propagation to prevent triggering iframe clicks
+          // Stop propagation to prevent triggering other clicks
           event.stopPropagation();
         });
       });
-      
-      // Enable pointer events on iframe only when directly clicking on it
-      document.querySelectorAll('.portfolio-content.video-embed').forEach(content => {
-        content.addEventListener('click', function(event) {
-          // Check if we're clicking on the iframe directly
-          if (event.target.tagName.toLowerCase() === 'iframe') {
-            event.target.style.pointerEvents = 'auto';
-          }
-        });
-      });
     }
+
+    // Initialize image stacks
+    initImageStacks();
   }
 
-  window.addEventListener('load', initPortfolio);
+  /**
+   * Image Stack functionality
+   */
+  function initImageStacks() {
+    const imageStacks = document.querySelectorAll('.portfolio-content.image-stack');
+    
+    imageStacks.forEach((stack, stackIndex) => {
+      // Get the image stack data
+      const stackDataElement = stack.querySelector('.stack-images-data');
+      if (!stackDataElement) return;
+      
+      const stackData = JSON.parse(stackDataElement.textContent);
+      const mainImage = stack.querySelector('.stack-main-image');
+      const currentImageSpan = stack.querySelector('.current-image');
+      const totalImagesSpan = stack.querySelector('.total-images');
+      const prevBtn = stack.querySelector('.stack-prev');
+      const nextBtn = stack.querySelector('.stack-next');
+      const portfolioInfo = stack.querySelector('.portfolio-info');
+      
+      // Add preview button for lightbox functionality if not already present
+      if (!stack.querySelector('.preview-link')) {
+        const previewLink = document.createElement('a');
+        previewLink.href = mainImage.src;
+        previewLink.className = 'glightbox preview-link';
+        previewLink.innerHTML = '<i class="bi bi-zoom-in"></i>';
+        previewLink.title = stack.querySelector('.portfolio-info h4')?.textContent || 'Image Gallery';
+        previewLink.dataset.gallery = `gallery-stack-${stackIndex}`;
+        
+        // Add to portfolio info section
+        if (portfolioInfo) {
+          portfolioInfo.appendChild(previewLink);
+        }
+      }
+
+      // Create hidden gallery links for GLightbox
+      const stackId = stack.getAttribute('data-stack-id') || `stack-${stackIndex}`;
+      const galleryId = `gallery-${stackId}`;
+      
+      // Remove any existing gallery links first
+      const existingGallery = stack.querySelector('.stack-gallery-links');
+      if (existingGallery) {
+        existingGallery.remove();
+      }
+      
+      // Create new gallery links container
+      const galleryLinksContainer = document.createElement('div');
+      galleryLinksContainer.className = 'stack-gallery-links';
+      galleryLinksContainer.style.display = 'none';
+      
+      // Add all images to the gallery
+      stackData.forEach((imageUrl, i) => {
+        const galleryLink = document.createElement('a');
+        galleryLink.href = imageUrl;
+        galleryLink.className = 'glightbox';
+        galleryLink.dataset.gallery = galleryId;
+        galleryLink.title = `${stack.querySelector('.portfolio-info h4')?.textContent || 'Image'} - ${i + 1}`;
+        galleryLinksContainer.appendChild(galleryLink);
+      });
+      
+      // Add gallery links to stack
+      stack.appendChild(galleryLinksContainer);
+
+      let currentIndex = 0;
+      
+      // Set total images
+      if (totalImagesSpan) {
+        totalImagesSpan.textContent = stackData.length;
+      }
+      
+      // Function to update image
+      function updateImage(index) {
+        if (index < 0 || index >= stackData.length) return;
+        
+        currentIndex = index;
+        mainImage.classList.add('loading');
+        
+        // Preload new image
+        const newImg = new Image();
+        newImg.onload = function() {
+          mainImage.src = stackData[currentIndex];
+          mainImage.classList.remove('loading');
+          
+          // Update the counter
+          if (currentImageSpan) {
+            currentImageSpan.textContent = currentIndex + 1;
+          }
+
+          // Update the preview link href
+          const previewLink = stack.querySelector('.preview-link');
+          if (previewLink) {
+            previewLink.href = stackData[currentIndex];
+          }
+        };
+        
+        newImg.onerror = function() {
+          mainImage.classList.remove('loading');
+          console.error('Failed to load image:', stackData[currentIndex]);
+        };
+        
+        newImg.src = stackData[currentIndex];
+      }
+      
+      // Previous button click
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const newIndex = currentIndex > 0 ? currentIndex - 1 : stackData.length - 1;
+          updateImage(newIndex);
+        });
+      }
+      
+      // Next button click
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const newIndex = currentIndex < stackData.length - 1 ? currentIndex + 1 : 0;
+          updateImage(newIndex);
+        });
+      }
+      
+      // Make the entire stack clickable for next image (except when clicking on navigation buttons)
+      stack.addEventListener('click', (e) => {
+        // Don't trigger if clicking navigation buttons or links
+        if (!e.target.closest('.stack-nav-btn') && !e.target.closest('a')) {
+          const newIndex = currentIndex < stackData.length - 1 ? currentIndex + 1 : 0;
+          updateImage(newIndex);
+        }
+      });
+      
+      // Keyboard navigation when focused
+      stack.setAttribute('tabindex', '0'); // Make it focusable
+      stack.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          prevBtn.click();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          nextBtn.click();
+        }
+      });
+      
+      // Touch swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      stack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      
+      stack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+      
+      function handleSwipe() {
+        const threshold = 50; // Minimum distance for a swipe
+        
+        if (touchEndX < touchStartX - threshold) {
+          // Swipe left - next image
+          const newIndex = currentIndex < stackData.length - 1 ? currentIndex + 1 : 0;
+          updateImage(newIndex);
+        }
+        
+        if (touchEndX > touchStartX + threshold) {
+          // Swipe right - previous image
+          const newIndex = currentIndex > 0 ? currentIndex - 1 : stackData.length - 1;
+          updateImage(newIndex);
+        }
+      }
+    });
+  }
+
+  window.addEventListener('load', function() {
+    // Initialize GLightbox after image stacks are ready
+    initImageStacks();
+    
+    if (typeof GLightbox === 'function') {
+      const lightbox = GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true
+      });
+    }
+  });
 
 })();

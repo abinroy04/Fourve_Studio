@@ -514,7 +514,7 @@
   <div class="container section-title" data-aos="fade-up">
     <span class="description-title">Portfolio</span>
     <h2>Portfolio</h2>
-    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    <p>A showcase of our creative work across photography, videography, live streaming, and more — crafted to elevate individuals and brands</p>
   </div><!-- End Section Title -->
 
   <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -532,6 +532,9 @@
             {% if port_filter.live_streaming %}
             <li class="filter-item" data-filter="live-streaming">Live Streaming</li>
             {% endif %}
+            {% if port_filter.digital_marketing %}
+            <li class="filter-item" data-filter="digital-marketing">Digital Marketing</li>
+            {% endif %}
           </ul>
         </div>
       </div>
@@ -541,17 +544,65 @@
           
           <!-- Display photography items -->
           {% if port_filter.photograhy %}
-            {% for image_url in port_filter.photograhy %}
-            <div class="col-lg-4 col-md-6 portfolio-item photography">
-              <div class="portfolio-content">
-                <img src="{{ image_url }}" class="img-fluid" alt="Photography Portfolio Item">
-                <div class="portfolio-info">
-                  <h4>Photography Project</h4>
-                  <p>Professional photography services</p>
-                  <a href="{{ image_url }}" title="Photography Project" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+            {% for item in port_filter.photograhy %}
+              {% if item is string %}
+                <!-- Single image -->
+                <div class="col-lg-4 col-md-6 portfolio-item photography">
+                  <div class="portfolio-content">
+                    <img src="{{ item }}" class="img-fluid" alt="Photography Portfolio Item">
+                    <div class="portfolio-info">
+                      <h4>Photography Project</h4>
+                      <p>Professional photography services</p>
+                      <a href="{{ item }}" title="Photography Project" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              {% else %}
+                <!-- Image stack -->
+                <div class="col-lg-4 col-md-6 portfolio-item photography">
+                  <div class="portfolio-content image-stack" data-stack-id="stack-{{ loop.index }}">
+                    <!-- Main display image -->
+                    <img src="{{ item.images[0] }}" class="img-fluid stack-main-image" alt="Photography Portfolio Item">
+                    
+                    <!-- Stack indicator overlay -->
+                    <div class="stack-badge">
+                      <i class="bi bi-layers"></i> {{ item.images|length }}
+                    </div>
+                    
+                    <!-- Navigation arrows - more visible -->
+                    <div class="stack-navigation">
+                      <button class="stack-nav-btn stack-prev" aria-label="Previous image">
+                        <i class="bi bi-chevron-left"></i>
+                      </button>
+                      <div class="stack-counter">
+                        <span class="current-image">1</span> / <span class="total-images">{{ item.images|length }}</span>
+                      </div>
+                      <button class="stack-nav-btn stack-next" aria-label="Next image">
+                        <i class="bi bi-chevron-right"></i>
+                      </button>
+                    </div>
+                    
+                    <!-- Portfolio overlay -->
+                    <div class="portfolio-overlay">
+                      <div class="portfolio-info">
+                        <h4>{{ item.title }}</h4>
+                        <p>Professional photography collection</p>
+                        <!-- Preview link for gallery -->
+                        <a href="{{ item.images[0] }}" title="{{ item.title }}" class="glightbox preview-link" data-gallery="gallery-stack-{{ loop.index }}"><i class="bi bi-zoom-in"></i></a>
+                        <!-- Navigation text -->
+                        <div class="stack-instructions">
+                          <small>Use arrow keys or swipe to navigate images</small>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Hidden images data - this is the crucial part -->
+                    <script type="application/json" class="stack-images-data">
+                      {{ item.images | tojson }}
+                    </script>
+                  </div>
+                </div>
+              {% endif %}
             {% endfor %}
           {% endif %}
 
@@ -597,16 +648,36 @@
                   {% else %}
                     {% set video_id = '' %}
                   {% endif %}
-                  <!-- YouTube embed iframe -->
-                  <iframe class="youtube-embed" src="https://www.youtube.com/embed/{{ video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                  <div class="portfolio-overlay">
-                    <div class="portfolio-info">
-                      <h4>YouTube Stream</h4>
-                      <p>Professional streaming services</p>
-                      <a href="{{ stream_url }}" title="YouTube Video" class="external-link" target="_blank"><i class="bi bi-youtube"></i> Watch on YouTube</a>
+                  
+                  {% if video_id %}
+                    <!-- Display YouTube thumbnail -->
+                    <img src="https://img.youtube.com/vi/{{ video_id }}/maxresdefault.jpg" 
+                         class="img-fluid youtube-thumbnail" 
+                         alt="YouTube Video Thumbnail"
+                         data-fallback="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg"
+                         data-video-id="{{ video_id }}"
+                         data-video-url="{{ stream_url }}">
+                    
+                    <div class="portfolio-overlay">
+                      <div class="portfolio-info">
+                        <h4>YouTube Video</h4>
+                        <p>Professional streaming services</p>
+                        <a href="{{ stream_url }}" title="YouTube Video" class="external-link" target="_blank">
+                          <i class="bi bi-youtube"></i> Watch on YouTube
+                        </a>
+                      </div>
                     </div>
-                  </div>
+                  {% else %}
+                    <!-- Fallback for invalid YouTube URLs -->
+                    <img src="{{ url_for('static', filename='img/misc/misc-square-6.webp') }}" class="img-fluid" alt="Live Streaming Portfolio Item">
+                    <div class="portfolio-info">
+                      <h4>Live Streaming</h4>
+                      <p>Professional streaming services</p>
+                      <a href="{{ stream_url }}" title="Live Streaming Project" class="glightbox preview-link"><i class="bi bi-play-circle"></i></a>
+                    </div>
+                  {% endif %}
                 {% else %}
+                  <!-- Fallback for non-YouTube URLs -->
                   <img src="{{ url_for('static', filename='img/misc/misc-square-6.webp') }}" class="img-fluid" alt="Live Streaming Portfolio Item">
                   <div class="portfolio-info">
                     <h4>Live Streaming</h4>
@@ -619,14 +690,26 @@
             {% endfor %}
           {% endif %}
 
+          <!-- Display Digital Marketing items -->
+          {% if port_filter.digital_marketing %}
+            {% for image_url in port_filter.digital_marketing %}
+            <div class="col-lg-4 col-md-6 portfolio-item digital-marketing">
+              <div class="portfolio-content">
+                <img src="{{ image_url }}" class="img-fluid" alt="Digital Marketing Portfolio Item">
+                <div class="portfolio-info">
+                  <h4>Digital Marketing</h4>
+                  <a href="{{ image_url }}" title="Digital Marketing Project" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          {% endif %}
+
         </div><!-- End Portfolio Container -->
       </div>
     </div>
   </div>
   
-
-
-  <!-- Add enhanced JavaScript for overlay interactions -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Existing filter code
@@ -668,17 +751,6 @@
           } else {
             this.src = "{{ url_for('static', filename='img/misc/misc-square-16.webp') }}";
           }
-        });
-      });
-
-      // Pause videos when clicking away
-      document.querySelectorAll('.filter-item').forEach(item => {
-        item.addEventListener('click', function() {
-          // Pause all YouTube videos when filtering
-          document.querySelectorAll('.youtube-embed').forEach(iframe => {
-            const src = iframe.src;
-            iframe.src = src; // Resetting src stops the video
-          });
         });
       });
       
@@ -828,6 +900,7 @@
   </div>
 </section><!-- /Contact Section -->
 <script>
+
 document.addEventListener('DOMContentLoaded', function() {
   // Contact form AJAX handling
   const contactForm = document.getElementById('contactForm');
