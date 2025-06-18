@@ -451,7 +451,14 @@
         });
       }
       
-
+      // Make the entire stack clickable for next image (except when clicking on navigation buttons)
+      stack.addEventListener('click', (e) => {
+        // Don't trigger if clicking navigation buttons or links
+        if (!e.target.closest('.stack-nav-btn') && !e.target.closest('a')) {
+          const newIndex = currentIndex < stackData.length - 1 ? currentIndex + 1 : 0;
+          updateImage(newIndex);
+        }
+      });
       
       // Keyboard navigation when focused
       stack.setAttribute('tabindex', '0'); // Make it focusable

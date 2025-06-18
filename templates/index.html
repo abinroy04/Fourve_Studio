@@ -558,6 +558,7 @@
                   </div>
                 </div>
               {% else %}
+              {% set gallery_id = loop.index %}   <!-- Atk was here :) -->
                 <!-- Image stack -->
                 <div class="col-lg-4 col-md-6 portfolio-item photography">
                   <div class="portfolio-content image-stack" data-stack-id="stack-{{ loop.index }}">
@@ -595,7 +596,7 @@
     <a 
       href="{{ image }}" 
       class="glightbox" 
-      data-gallery="gallery-stack-{{ loop.index }}" 
+      data-gallery="gallery-stack-{{ gallery_id }}"
       title="{{ item.title }} - {{ loop.index }}">
       <span></span>  <!-- Add some content so it's not treated as broken -->
     </a>
