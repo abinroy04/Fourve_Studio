@@ -2112,7 +2112,13 @@ section,
       align-items: center;
       justify-content: center;
       z-index: 10;
+      pointer-events: none;
     }
+
+    .portfolio-overlay * {
+      pointer-events: auto;
+    }
+
 
     .portfolio-content:hover .portfolio-overlay {
       opacity: 1;
@@ -3838,9 +3844,11 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 4;
+  z-index: 9999 !important;
   padding: 0 10px;
+  pointer-events: auto;
 }
+
 
 .stack-nav-btn {
   width: 40px;

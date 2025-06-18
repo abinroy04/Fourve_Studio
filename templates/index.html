@@ -589,6 +589,19 @@
                         <p>Professional photography collection</p>
                         <!-- Preview link for gallery -->
                         <a href="{{ item.images[0] }}" title="{{ item.title }}" class="glightbox preview-link" data-gallery="gallery-stack-{{ loop.index }}"><i class="bi bi-zoom-in"></i></a>
+
+<div style="display: none;">
+  {% for image in item.images[1:] %}
+    <a 
+      href="{{ image }}" 
+      class="glightbox" 
+      data-gallery="gallery-stack-{{ loop.index }}" 
+      title="{{ item.title }} - {{ loop.index }}">
+      <span></span>  <!-- Add some content so it's not treated as broken -->
+    </a>
+  {% endfor %}
+</div>
+
                         <!-- Navigation text -->
                         <div class="stack-instructions">
                           <small>Use arrow keys or swipe to navigate images</small>
