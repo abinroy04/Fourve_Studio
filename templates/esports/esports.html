@@ -4,6 +4,69 @@
 {% block description %}FOURVE Studio is a creative design agency specializing in UI/UX design, web development, and digital marketing services.{% endblock %}
 {% block keywords %}design agency, creative studio, UI/UX design, web development{% endblock %}
 
+{% block head %}
+{{ block.super }}
+<style>
+  .index-page {
+    background-image: url('/static/img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .esports-container {
+    margin: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  
+  .esports-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .esports-image-btn {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    aspect-ratio: 16/9;
+  }
+  
+  .esports-image-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .esports-image-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .esports-image-btn .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .esports-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block body_class %}index-page{% endblock %}
 
 {% block content %}
@@ -13,11 +76,37 @@
       <div class="container section-title" data-aos="fade-up">
         <span class="description-title">E-Sports</span>
         <h2>Fourve E-Sports</h2>
-        <p>Coming Soon</p>
       </div><!-- End Section Title -->
 
   <div class="container" data-aos="fade-up">
-    <p>Keep an eye out 😎.</p>
+    <!-- Container with margin around borders containing two columns of button-like images -->
+    <div class="esports-container">
+      <div class="esports-grid">
+        <!-- First column image -->
+        <div class="esports-image-btn" onclick="window.location='tournaments'">
+          <img src="/static/img/efootball.jpg" alt="Esports Tournaments">
+          <div class="overlay">Tournaments</div>
+        </div>
+        
+        <!-- Second column image -->
+        <div class="esports-image-btn" onclick="window.location='teams'">
+          <img src="/static/img/esports/teams.jpg" alt="Esports Teams">
+          <div class="overlay">Teams</div>
+        </div>
+        
+        <!-- Third column image -->
+        <div class="esports-image-btn" onclick="window.location='events'">
+          <img src="/static/img/esports/events.jpg" alt="Esports Events">
+          <div class="overlay">Events</div>
+        </div>
+        
+        <!-- Fourth column image -->
+        <div class="esports-image-btn" onclick="window.location='merchandise'">
+          <img src="/static/img/esports/merchandise.jpg" alt="Esports Merchandise">
+          <div class="overlay">Merchandise</div>
+        </div>
+      </div>
+    </div>
   </div>
-</section
+</section>
 {% endblock %}
