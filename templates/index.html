@@ -549,7 +549,8 @@
                 <!-- Single image -->
                 <div class="col-lg-4 col-md-6 portfolio-item photography">
                   <div class="portfolio-content">
-                    <img src="{{ item }}" class="img-fluid" alt="Photography Portfolio Item">
+                    <img src="{{ item }}" class="img-fluid" alt="Photography Portfolio Item"
+                      onerror="this.src='{{ url_for('static', filename='img/misc/misc-square-16.webp') }}';">
                     <div class="portfolio-info">
                       <h4>Photography Project</h4>
                       <p>Professional photography services</p>
