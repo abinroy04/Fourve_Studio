@@ -36,7 +36,7 @@ def event_management():
 
 @app.route('/fourve-e-sports')
 def e_sports():
-    return render_template('esports.html')
+    return render_template('esports/esports.html')
 
 
 # Index page things
