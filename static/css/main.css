@@ -2120,9 +2120,13 @@ section,
     }
 
 
-    .portfolio-content:hover .portfolio-overlay {
-      opacity: 1;
-    }
+/* Only show overlay on hover — desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-content:hover .portfolio-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
 
     .portfolio-overlay .portfolio-info {
       position: static;
