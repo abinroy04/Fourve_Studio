@@ -36,7 +36,7 @@ def event_management():
 
 @app.route('/fourve-e-sports')
 def e_sports():
-    return render_template('esports/esports.html')
+    return render_template('esports/esports.html', games=games)
 
 
 # Index page things
@@ -50,10 +50,10 @@ port_filter = {
             "title": "Save The Date",
             "images": 
             [
-                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/temp.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvdGVtcC5wbmciLCJpYXQiOjE3NTAwNzM1MTksImV4cCI6MTc1MDY3ODMxOX0.1tRMEhVcy8nLcky2DudzXBoQKIUAB6PdHken3qdz85s",
-                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/tempo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvdGVtcG8ucG5nIiwiaWF0IjoxNzUwMDczNTMyLCJleHAiOjE3NTA2NzgzMzJ9.UZCL3VFVmVPYEDyfzwpsfeV8mcVqJ1r1u4rSWDE2Tiw",
-                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/temp%20again.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvdGVtcCBhZ2Fpbi5wbmciLCJpYXQiOjE3NTAwNzM1NTMsImV4cCI6MTc1MDY3ODM1M30.t8bgSxs4BEDOEKOAtBis_LY2HS8ql7oZ0ma7Nrt2fDE",
-                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/temp%20again%20huh.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvdGVtcCBhZ2FpbiBodWgucG5nIiwiaWF0IjoxNzUwMDczNTYxLCJleHAiOjE3NTA2NzgzNjF9.793UQ2NSf1sq-R5F6xfiaVoQczqgPnfVJ3c6ErVqSgw"
+                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/temp.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pb3Rmb2xpby1pbWFnZXMvdGVtcC5wbmciLCJpYXQiOjE3NTAwNzM1MTksImV4cCI6MTc1MDY3ODMxOX0.1tRMEhVcy8nLcky2DudzXBoQKIUAB6PdHken3qdz85s",
+                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/tempo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pb3Rmb2xpby1pbWFnZXMvdGVtcG8ucG5nIiwiaWF0IjoxNzUwMDczNTMyLCJleHAiOjE3NTA2NzgzMzJ9.UZCL3VFVmVPYEDyfzwpsfeV8mcVqJ1r1u4rSWDE2Tiw",
+                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/temp%20again.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pb3Rmb2xpby1pbWFnZXMvdGVtcCBhZ2Fpbi5wbmciLCJpYXQiOjE3NTAwNzM1NTMsImV4cCI6MTc1MDY3ODM1M30.t8bgSxs4BEDOEKOAtBis_LY2HS8ql7oZ0ma7Nrt2fDE",
+                "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/temp%20again%20huh.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pb3Rmb2xpby1pbWFnZXMvdGVtcCBhZ2FpbiBodWgucG5nIiwiaWF0IjoxNzUwMDczNTYxLCJleHAiOjE3NTA2NzgzNjF9.793UQ2NSf1sq-R5F6xfiaVoQczqgPnfVJ3c6ErVqSgw"
             ]
         }
     ],
@@ -69,7 +69,7 @@ port_filter = {
     ],
     "digital_marketing":
     [
-        "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/Rewago.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pbWFnZXMvUmV3YWdvLnBuZyIsImlhdCI6MTc1MDA3MTg4NSwiZXhwIjoyMDY1NDMxODg1fQ.Ur3vNlz4fU2UD0eaoNgtIHNHVZXsFBCpJFuVS7XYsWI"
+        "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/potfolio-images/Rewago.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3Rmb2xpby1pb3Rmb2xpby1pbWFnZXMvUmV3YWdvLnBuZyIsImlhdCI6MTc1MDA3MTg4NSwiZXhwIjoyMDY1NDMxODg1fQ.Ur3vNlz4fU2UD0eaoNgtIHNHVZXsFBCpJFuVS7XYsWI"
     ],
 }
 
@@ -183,6 +183,29 @@ def submit_contact():
                 'message': 'We are unable to receive your message at the moment. Please try contacting us via phone.'
             })
 
+#Esports page things
+games = [
+    {
+        "name": "BGMI",
+        "image": "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/website-images/bgmi.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWltYWdlcy9iZ21pLndlYnAiLCJpYXQiOjE3NTA0MTk1NDQsImV4cCI6MjA2NTc3OTU0NH0.VcHrO3t3uBuAgipekv4Wa7SoTz71O1--jUQhOuXNCu8",
+        "description": "Experience intense battle royale action with dynamic gameplay and strategic combat."
+    },
+    {
+        "name": "Free Fire",
+        "image": "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/website-images/free_fire.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWltYWdlcy9mcmVlX2ZpcmUud2VicCIsImlhdCI6MTc1MDQxOTU3NywiZXhwIjoyMDY1Nzc5NTc3fQ.p8RNprPoYl2s8_yF6jMxUm29LXXWtJs4LoAIpes19bQ",
+        "description": "Fast-paced 10-minute survival battles featuring unique character abilities, vibrant graphics, and mobile-friendly competitive gameplay."
+    },
+    {
+        "name": "Valorant",
+        "image": "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/website-images/valorant.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWltYWdlcy92YWxvcmFudC53ZWJwIiwiaWF0IjoxNzUwNDE5NTk2LCJleHAiOjIwNjU3Nzk1OTZ9.BmdX9SSo6XX6vNqJpO4nA2OpUxi8AKQSopdJqclLQ8w",
+        "description": "Precision-based tactical shooter blending unique agent abilities with strategic gunplay for intense competitive 5v5 matches."
+    },
+    {
+        "name": "eFootball",
+        "image": "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/website-images/efbb.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWltYWdlcy9lZmJiLndlYnAiLCJpYXQiOjE3NTA0MjI0NzcsImV4cCI6MjA2NTc4MjQ3N30.wBTIs3IssqoC2K5IvntChWXq5zu1FuG3mOKnSWzVP7g",
+        "description": "Realistic soccer simulation featuring authentic teams, players, and physics-based gameplay for true football enthusiasts."
+    }
+]
 
 if __name__ == '__main__':
     app.run(debug=False)
