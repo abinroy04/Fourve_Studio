@@ -281,20 +281,6 @@
         });
       });
 
-      // Handle thumbnail errors for regular portfolio images
-      document.querySelectorAll('.portfolio-content img:not(.youtube-thumbnail)').forEach(img => {
-        img.addEventListener('error', function() {
-          // If thumbnail fails to load, use category-specific fallback
-          const portfolioItem = this.closest('.portfolio-item');
-          if (portfolioItem.classList.contains('videography')) {
-            this.src = "/static/img/misc/misc-square-13.webp";
-          } else if (portfolioItem.classList.contains('live-streaming')) {
-            this.src = "/static/img/misc/misc-square-6.webp";
-          } else {
-            this.src = "/static/img/misc/misc-square-16.webp";
-          }
-        });
-      });
 
       // Pause videos when clicking away (for iframe embeds)
       document.querySelectorAll('.filter-item').forEach(item => {
