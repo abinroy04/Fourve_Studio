@@ -2112,11 +2112,21 @@ section,
       align-items: center;
       justify-content: center;
       z-index: 10;
+      pointer-events: none;
     }
 
-    .portfolio-content:hover .portfolio-overlay {
-      opacity: 1;
+    .portfolio-overlay * {
+      pointer-events: auto;
     }
+
+
+/* Only show overlay on hover — desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-content:hover .portfolio-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
 
     .portfolio-overlay .portfolio-info {
       position: static;
@@ -3838,9 +3848,11 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 4;
+  z-index: 9999 !important;
   padding: 0 10px;
+  pointer-events: auto;
 }
+
 
 .stack-nav-btn {
   width: 40px;

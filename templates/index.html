@@ -549,7 +549,8 @@
                 <!-- Single image -->
                 <div class="col-lg-4 col-md-6 portfolio-item photography">
                   <div class="portfolio-content">
-                    <img src="{{ item }}" class="img-fluid" alt="Photography Portfolio Item">
+                    <img src="{{ item }}" class="img-fluid" alt="Photography Portfolio Item"
+                      onerror="this.src='{{ url_for('static', filename='img/misc/misc-square-16.webp') }}';">
                     <div class="portfolio-info">
                       <h4>Photography Project</h4>
                       <p>Professional photography services</p>
@@ -558,6 +559,7 @@
                   </div>
                 </div>
               {% else %}
+              {% set gallery_id = loop.index %}   <!-- Atk was here :) -->
                 <!-- Image stack -->
                 <div class="col-lg-4 col-md-6 portfolio-item photography">
                   <div class="portfolio-content image-stack" data-stack-id="stack-{{ loop.index }}">
@@ -589,10 +591,18 @@
                         <p>Professional photography collection</p>
                         <!-- Preview link for gallery -->
                         <a href="{{ item.images[0] }}" title="{{ item.title }}" class="glightbox preview-link" data-gallery="gallery-stack-{{ loop.index }}"><i class="bi bi-zoom-in"></i></a>
-                        <!-- Navigation text -->
-                        <div class="stack-instructions">
-                          <small>Use arrow keys or swipe to navigate images</small>
-                        </div>
+
+<div style="display: none;">
+  {% for image in item.images[1:] %}
+    <a 
+      href="{{ image }}" 
+      class="glightbox" 
+      data-gallery="gallery-stack-{{ gallery_id }}"
+      title="{{ item.title }} - {{ loop.index }}">
+      <span></span>  <!-- Add some content so it's not treated as broken -->
+    </a>
+  {% endfor %}
+</div>
                       </div>
                     </div>
                     
@@ -792,7 +802,7 @@
   <div class="container section-title" data-aos="fade-up">
     <span class="description-title">GET IN TOUCH</span>
     <h2>Contact</h2>
-    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    <p>Questions or ideas? We're just a message away from turning them into reality.</p>
   </div><!-- End Section Title -->
 
   <div class="container">
@@ -800,7 +810,7 @@
       <div class="contact-info-panel">
         <div class="contact-info-header">
           <h3>Contact Information</h3>
-          <p>Dignissimos deleniti accusamus rerum voluptate. Dignissimos rerum sit maiores reiciendis voluptate inventore ut.</p>
+          <p>Get In Touch Now!</p>
         </div>
 
         <div class="contact-info-cards">
@@ -861,8 +871,7 @@
 
         <div class="form-container">
           <h3>Send Us a Message</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit mauris hendrerit faucibus imperdiet nec eget felis.</p>
-
+          
           <form id="contactForm" action="{{ url_for('submit_contact') }}" method="post" class="php-email-form">
             <div class="form-floating mb-3">
               <input type="text" class="form-control" id="nameInput" name="name" placeholder="Full Name" required>
