@@ -1,0 +1,288 @@
+{% extends "esports/base_esports.html" %}
+
+    {% block title %}Registration - Fourve E-Sports{% endblock %}
+
+    {% block additional_styles %}
+    /* Additional styles specific to registration page */
+    {% endblock %}
+
+    {% block nav_extras %}
+    {% if registration_type == 'tournament' %}
+        <a href="{{ url_for('game_detail', game_id=game_id) }}" class="px-3 py-2 text-gray-200 transition-colors duration-300 transform rounded-md hover:bg-gray-700">
+            Back to {{ game_name }}
+        </a>
+    {% elif registration_type == 'scrim' %}
+        <a href="{{ url_for('game_detail', game_id=game_id) }}" class="px-3 py-2 text-gray-200 transition-colors duration-300 transform rounded-md hover:bg-gray-700">
+            Back to {{ game_name }}
+        </a>
+    {% endif %}
+    {% endblock %}
+
+    {% block content %}
+    <main class="container mx-auto px-4 py-12">
+        <div class="section-title mb-8">
+            {% if registration_type == 'tournament' %}
+                <h2>Tournament Registration</h2>
+                <p class="text-gray-400 mt-4">Register for {{ tournament_name }}</p>
+            {% elif registration_type == 'scrim' %}
+                <h2>Scrim Registration</h2>
+                <p class="text-gray-400 mt-4">Join {{ scrim_title }}</p>
+            {% endif %}
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <!-- Registration Form (3 columns on large screens) -->
+            <div class="lg:col-span-3 bg-gray-800 rounded-lg shadow-lg p-8">
+                <form id="registrationForm" class="space-y-6" enctype="multipart/form-data">
+                    <input type="hidden" name="game_id" value="{{ game_id }}">
+                    {% if registration_type == 'tournament' %}
+                        <input type="hidden" name="tournament_id" value="{{ tournament_id }}">
+                    {% elif registration_type == 'scrim' %}
+                        <input type="hidden" name="scrim_id" value="{{ scrim_id }}">
+                    {% endif %}
+                    <input type="hidden" name="registration_type" value="{{ registration_type }}">
+                    
+                    <!-- Personal Information Section -->
+                    <div class="bg-gray-700/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-purple-400 mb-4">Personal Information</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="player_name" class="block text-sm font-medium text-gray-300 mb-1">Full Name *</label>
+                                <input type="text" id="player_name" name="player_name" required
+                                    class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email *</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            
+                            <div>
+                                <label for="game_handle" class="block text-sm font-medium text-gray-300 mb-1">Your In-Game Handle/Username *</label>
+                                <input type="text" id="game_handle" name="game_handle" required
+                                    class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Information (Only for Tournaments) -->
+                    {% if registration_type == 'tournament' %}
+                        <div class="bg-gray-700/50 p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-purple-400 mb-4">Team Information</h3>
+                            
+                            <div class="mb-4">
+                                <label for="team_name" class="block text-sm font-medium text-gray-300 mb-1">Team Name *</label>
+                                <input type="text" id="team_name" name="team_name" required
+                                    class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            
+                            <!-- Team Members -->
+                            <div class="space-y-4">
+                                <h4 class="text-md font-semibold text-gray-300">Team Members</h4>
+                                
+                                <!-- Member 1 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-800 p-3 rounded-md">
+                                    <div>
+                                        <label for="member1_name" class="block text-sm font-medium text-gray-300 mb-1">Member 2 Name *</label>
+                                        <input type="text" id="member1_name" name="member1_name" required
+                                            class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    </div>
+                                    <div>
+                                        <label for="member1_handle" class="block text-sm font-medium text-gray-300 mb-1">In-Game Handle *</label>
+                                        <input type="text" id="member1_handle" name="member1_handle" required
+                                            class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    </div>
+                                </div>
+                                
+                                <!-- Member 2 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-800 p-3 rounded-md">
+                                    <div>
+                                        <label for="member2_name" class="block text-sm font-medium text-gray-300 mb-1">Member 3 Name *</label>
+                                        <input type="text" id="member2_name" name="member2_name" required
+                                            class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    </div>
+                                    <div>
+                                        <label for="member2_handle" class="block text-sm font-medium text-gray-300 mb-1">In-Game Handle *</label>
+                                        <input type="text" id="member2_handle" name="member2_handle" required
+                                            class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    </div>
+                                </div>
+                                
+                                <!-- Member 3 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-800 p-3 rounded-md">
+                                    <div>
+                                        <label for="member3_name" class="block text-sm font-medium text-gray-300 mb-1">Member 4 Name *</label>
+                                        <input type="text" id="member3_name" name="member3_name" required
+                                            class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    </div>
+                                    <div>
+                                        <label for="member3_handle" class="block text-sm font-medium text-gray-300 mb-1">In-Game Handle *</label>
+                                        <input type="text" id="member3_handle" name="member3_handle" required
+                                            class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Substitute Members (Optional) -->
+                            <div class="mt-6 space-y-4" x-data="{ showSubstitutes: false }">
+                                <div class="flex items-center">
+                                    <button type="button" 
+                                            @click="showSubstitutes = !showSubstitutes"
+                                            class="text-sm text-purple-400 hover:text-purple-300 flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" :class="showSubstitutes ? 'transform rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                        <span x-text="showSubstitutes ? 'Hide Substitutes' : 'Add Substitutes (Optional)'"></span>
+                                    </button>
+                                </div>
+                                
+                                <div x-show="showSubstitutes" x-transition class="space-y-4">
+                                    <h4 class="text-md font-semibold text-gray-300">Substitute Players (Optional)</h4>
+                                    
+                                    <!-- Substitute 1 -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-800 p-3 rounded-md">
+                                        <div>
+                                            <label for="sub1_name" class="block text-sm font-medium text-gray-300 mb-1">Substitute 1 Name</label>
+                                            <input type="text" id="sub1_name" name="sub1_name"
+                                                class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                        </div>
+                                        <div>
+                                            <label for="sub1_handle" class="block text-sm font-medium text-gray-300 mb-1">In-Game Handle</label>
+                                            <input type="text" id="sub1_handle" name="sub1_handle"
+                                                class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Substitute 2 -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-800 p-3 rounded-md">
+                                        <div>
+                                            <label for="sub2_name" class="block text-sm font-medium text-gray-300 mb-1">Substitute 2 Name</label>
+                                            <input type="text" id="sub2_name" name="sub2_name"
+                                                class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                        </div>
+                                        <div>
+                                            <label for="sub2_handle" class="block text-sm font-medium text-gray-300 mb-1">In-Game Handle</label>
+                                            <input type="text" id="sub2_handle" name="sub2_handle"
+                                                class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Payment Section -->
+                    <div class="bg-gray-700/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-purple-400 mb-4">Payment Confirmation</h3>
+                        
+                        <div class="mb-4">
+                            <p class="text-gray-300 mb-2">After making the payment via the QR code, please upload the screenshot of your payment confirmation:</p>
+                            <label for="payment_proof" class="block text-sm font-medium text-gray-300 mb-1">Payment Screenshot *</label>
+                            <input type="file" id="payment_proof" name="payment_proof" required accept="image/*"
+                                class="w-full bg-gray-700 border border-gray-600 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-purple-600 py-3 rounded-md text-white font-medium hover:bg-purple-700 transition-colors btn-glow">
+                        Submit Registration
+                    </button>
+                </form>
+                
+                <div id="registration-message" class="mt-6 hidden"></div>
+            </div>
+            
+            <!-- Payment Information (2 columns on large screens) -->
+            <div class="lg:col-span-2 bg-gray-800 rounded-lg shadow-lg p-8">
+                <h3 class="text-xl font-bold text-purple-400 mb-4">Payment Details</h3>
+                
+                <div class="flex flex-col items-center mb-6">
+                    <!-- QR Code Image -->
+                    <div class="mb-4 bg-white p-3 rounded-lg">
+                        <img src="{{ url_for('static', filename='img/payment_qr.png') }}" alt="Payment QR Code" class="w-full max-w-xs">
+                    </div>
+                    
+                    <p class="text-center text-gray-300">Scan the QR code to make your payment</p>
+                </div>
+                
+                <div class="space-y-3 bg-gray-700/50 p-4 rounded-lg">
+                    {% if registration_type == 'tournament' %}
+                        <p class="flex justify-between">
+                            <span class="text-gray-300">Entry Fee:</span>
+                            <span class="font-semibold">₹{{ tournament_fee }}</span>
+                        </p>
+                    {% elif registration_type == 'scrim' %}
+                        <p class="flex justify-between">
+                            <span class="text-gray-300">Entry Fee:</span>
+                            <span class="font-semibold">₹{{ scrim_fee }}</span>
+                        </p>
+                    {% endif %}
+                    
+                    <p class="flex justify-between">
+                        <span class="text-gray-300">Payment Method:</span>
+                        <span class="font-semibold">UPI</span>
+                    </p>
+                    
+                    <p class="flex justify-between">
+                        <span class="text-gray-300">UPI ID:</span>
+                        <span class="font-semibold">fourvepay@upi</span>
+                    </p>
+                </div>
+                
+                <div class="mt-6 bg-purple-900/30 p-4 rounded-lg">
+                    <h4 class="text-lg font-semibold text-purple-300 mb-2">Important Notes</h4>
+                    <ul class="list-disc list-inside text-gray-300 space-y-1">
+                        <li>Payment is required to confirm your registration</li>
+                        <li>Registration is only confirmed after payment verification</li>
+                        <li>For any issues with payment, contact us at support@fourve-esports.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% endblock %}
+
+    {% block scripts %}
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const messageDiv = document.getElementById('registration-message');
+            
+            fetch('{{ url_for("submit_registration") }}', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                messageDiv.classList.remove('hidden');
+                
+                if (data.success) {
+                    messageDiv.className = 'mt-6 p-4 bg-green-600 text-white rounded-lg';
+                    this.reset();
+                    window.scrollTo({ top: messageDiv.offsetTop, behavior: 'smooth' });
+                } else {
+                    messageDiv.className = 'mt-6 p-4 bg-red-600 text-white rounded-lg';
+                }
+                
+                messageDiv.textContent = data.message;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                messageDiv.classList.remove('hidden');
+                messageDiv.className = 'mt-6 p-4 bg-red-600 text-white rounded-lg';
+                messageDiv.textContent = 'An error occurred. Please try again.';
+            });
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>

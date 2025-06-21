@@ -1,155 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fourve E-Sports</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        gaming: {
-                            primary: '#6d28d9',
-                            secondary: '#4c1d95',
-                            accent: '#10b981'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        .carousel-item {
-            transition: opacity 0.5s ease-in-out;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .section-title .description-title {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #9333ea;
-            margin-bottom: 0.5rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: #9333ea;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        /* Button glow effect */
-        .btn-glow {
-            position: relative;
-            z-index: 1;
-            outline: 2px solid #9333ea;
-            outline-offset: 2px; /* Adding some space between button and outline */
-        }
-        
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            background: linear-gradient(135deg, #9333ea, #ef4444);
-            border-radius: inherit;
-            z-index: -1;
-            filter: blur(10px);
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-        
-        .btn-glow:hover::before {
-            opacity: 1;
-        }
-        
-    </style>
-</head>
-<body class="bg-gray-900 text-gray-200">
-    <nav x-data="{ isOpen: false }" class="relative bg-gray-900 shadow-lg shadow-gray-800/50 z-30">
-        <div class="container px-6 py-4 mx-auto">
-            <div class="lg:flex lg:items-center lg:justify-between">
-                <div class="flex items-center justify-between">
-                    <a href="#" class="text-2xl font-bold text-purple-500">
-                        Fourve E-Sports
-                    </a>
+{% extends "esports/base_esports.html" %}
 
-                    <!-- Mobile menu button -->
-                    <div class="flex lg:hidden">
-                        <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-200 hover:text-gray-400 focus:outline-none focus:text-gray-400" aria-label="toggle menu">
-                            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
-                            </svg>
-                    
-                            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+{% block title %}Fourve E-Sports{% endblock %}
 
-                <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-                <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-gray-800 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
-                    <div class="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
-                        <a href="#tournaments" class="px-3 py-2 mx-3 mt-2 text-gray-200 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-gray-700">
-                          Tournaments
-                        </a>
-                        <a href="#" class="px-3 py-2 mx-3 mt-2 text-gray-200 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-gray-700">
-                          Leaderboard
-                        </a>
-                        <a href="#tournaments" class="px-3 py-2 mx-3 mt-2 text-gray-200 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-gray-700">
-                          Games
-                        </a>
-                    </div>
-
-                    <div class="flex items-center mt-4 lg:mt-0">
-                        <button class="hidden mx-4 text-gray-200 transition-colors duration-300 transform lg:block hover:text-gray-400 focus:text-gray-400 focus:outline-none" aria-label="show notifications">
-                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15 17H20L18.5951 15.5951C18.2141 15.2141 18 14.6973 18 14.1585V11C18 8.38757 16.3304 6.16509 14 5.34142V5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5V5.34142C7.66962 6.16509 6 8.38757 6 11V14.1585C6 14.6973 5.78595 15.2141 5.40493 15.5951L4 17H9M15 17V18C15 19.6569 13.6569 21 12 21C10.3431 21 9 19.6569 9 18V17M15 17H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-
-                        <button type="button" class="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
-                            <div class="w-8 h-8 overflow-hidden border-2 border-purple-500 rounded-full">
-                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" class="object-cover w-full h-full" alt="avatar">
-                            </div>
-
-                            <h3 class="mx-2 text-gray-200 lg:hidden">Gamer123</h3>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+{% block content %}
 
     <!-- Hero Carousel Section -->
     <section x-data="{
@@ -167,8 +20,8 @@
             },
             {
                 image: 'https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                title: 'Pro Gaming Streams',
-                description: 'Watch live streams and learn from professional gamers.'
+                title: 'Play your Favorite Games',
+                description: 'Explore a wide range of games and join our exciting tournaments.'
             }
         ],
         autoplayInterval: null,
@@ -255,33 +108,26 @@
     <main class="container mx-auto px-4 py-8">
         <!-- Section Title -->
         <div id="tournaments" class="container section-title" data-aos="fade-up">
-            <h2>Tournaments</h2>
-            <p class="max-w-2xl mx-auto text-gray-300 mt-4">Competitive tournaments to take your gaming to the next level.</p>
+            <h2>Games</h2>
+            <p class="max-w-2xl mx-auto text-gray-300 mt-4">Competitive tournaments and scrims await you to take your gaming to the next level.</p>
         </div>
         
         <!-- Game Banners - Two Column Layout -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
           {%for game in games %}
-            <!-- Game Banner -->
-            <div class="relative overflow-hidden rounded-lg shadow-lg group game-card">
-                <img src="{{ game.image }}" 
-                     alt="game.name" class="w-full h-64 object-cover">
+            <!-- Game Banner -->            <div class="relative overflow-hidden rounded-lg shadow-lg group game-card">
+                <img src="{{ game.Image }}" 
+                     alt="{{ game.Game }}" class="w-full h-64 object-cover">
                 <div class="absolute inset-0 bg-black bg-opacity-60 transition-opacity group-hover:bg-opacity-40 flex flex-col justify-end p-6">
-                    <h3 class="text-2xl font-bold text-white">{{game.name}}</h3>
-                    <p class="text-gray-200 mb-4">{{game.description}}</p>
-                    <button class="bg-purple-600 rounded-tl-full rounded-br-full text-white font-medium px-6 py-2 hover:bg-purple-700 w-fit btn-glow">
-                        Register Now
-                    </button>
+                    <h3 class="text-2xl font-bold text-white">{{game.Game}}</h3>
+                    <p class="text-gray-200 mb-4">{{game.Description}}</p>
+                    <div class="flex space-x-4">
+                        <a href="{{ url_for('game_detail', game_id=game['Game-id']) }}" class="bg-purple-600 rounded-tl-full rounded-br-full text-white font-medium px-6 py-2 hover:bg-purple-700 w-fit btn-glow">
+                            Details
+                        </a>
+                    </div>
                 </div>
             </div>
           {%endfor%}
         </div>
-    </main>
-
-    <footer class="bg-gray-800 shadow mt-8 py-6 border-t border-gray-700">
-        <div class="container mx-auto px-4">
-            <p class="text-center text-gray-400">© 2025 Fourve E-Sports. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>
+    </main>{% endblock %}

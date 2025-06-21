@@ -4,8 +4,20 @@ import smtplib
 from email.mime.text import MIMEText
 import os
 from dotenv import load_dotenv
+from supabase import create_client
+from datetime import datetime
+from werkzeug.utils import secure_filename
 
 load_dotenv()
+
+# Ensure static directories exist
+img_dir = os.path.join(os.path.dirname(__file__), 'static', 'img')
+if not os.path.exists(img_dir):
+    os.makedirs(img_dir)
+
+SUPABASE_URL = os.environ.get('SUPABASE_URL')
+SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'default-secret-key-for-flashing')
@@ -36,7 +48,15 @@ def event_management():
 
 @app.route('/fourve-e-sports')
 def e_sports():
-    return render_template('esports/esports.html', games=games)
+    response_games = supabase.table('Games').select('*').execute()
+    games = response_games.data
+
+    response_tournaments = supabase.table('Tournaments').select('*').execute()
+    tournaments = response_tournaments.data
+
+    response_scrims = supabase.table('Scrims').select('*').execute()
+    scrims = response_scrims.data
+    return render_template('esports/esports.html', games=games, tournaments=tournaments, scrims=scrims)
 
 
 # Index page things
@@ -184,28 +204,271 @@ def submit_contact():
             })
 
 #Esports page things
-games = [
-    {
-        "name": "BGMI",
-        "image": "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/website-images/bgmi.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWltYWdlcy9iZ21pLndlYnAiLCJpYXQiOjE3NTA0MTk1NDQsImV4cCI6MjA2NTc3OTU0NH0.VcHrO3t3uBuAgipekv4Wa7SoTz71O1--jUQhOuXNCu8",
-        "description": "Experience intense battle royale action with dynamic gameplay and strategic combat."
-    },
-    {
-        "name": "Free Fire",
-        "image": "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/website-images/free_fire.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWltYWdlcy9mcmVlX2ZpcmUud2VicCIsImlhdCI6MTc1MDQxOTU3NywiZXhwIjoyMDY1Nzc5NTc3fQ.p8RNprPoYl2s8_yF6jMxUm29LXXWtJs4LoAIpes19bQ",
-        "description": "Fast-paced 10-minute survival battles featuring unique character abilities, vibrant graphics, and mobile-friendly competitive gameplay."
-    },
-    {
-        "name": "Valorant",
-        "image": "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/website-images/valorant.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWltYWdlcy92YWxvcmFudC53ZWJwIiwiaWF0IjoxNzUwNDE5NTk2LCJleHAiOjIwNjU3Nzk1OTZ9.BmdX9SSo6XX6vNqJpO4nA2OpUxi8AKQSopdJqclLQ8w",
-        "description": "Precision-based tactical shooter blending unique agent abilities with strategic gunplay for intense competitive 5v5 matches."
-    },
-    {
-        "name": "eFootball",
-        "image": "https://mviuygatbuhwminrfoik.supabase.co/storage/v1/object/sign/website-images/efbb.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xYjc1Y2QzMy0wOTJkLTRhMTgtOGMzMi00NzhkZTA3ZGYxYzMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWltYWdlcy9lZmJiLndlYnAiLCJpYXQiOjE3NTA0MjI0NzcsImV4cCI6MjA2NTc4MjQ3N30.wBTIs3IssqoC2K5IvntChWXq5zu1FuG3mOKnSWzVP7g",
-        "description": "Realistic soccer simulation featuring authentic teams, players, and physics-based gameplay for true football enthusiasts."
-    }
-]
+@app.route('/fourve-e-sports/game/<game_id>')
+def game_detail(game_id):
+    try:
+        # Fetch specific game by ID
+        response = supabase.table('Games').select('*').eq('Game-id', game_id).execute()
+        
+        if not response.data:
+            # Game not found
+            flash('Game not found', 'error')
+            return redirect(url_for('e_sports'))
+            
+        game = response.data[0]
+        print(f"Game found: {game['Game']}")
+          
+        # Fetch tournaments for this game
+        tournaments_response = supabase.table('Tournaments').select('*').eq('Game-id', game_id).execute()
+        tournaments = tournaments_response.data
+        print(f"Found {len(tournaments)} tournaments")
+        
+        # Fetch scrims for this game
+        scrims_response = supabase.table('Scrims').select('*').eq('Game-id', game_id).execute()
+        scrims = scrims_response.data
+        print(f"Found {len(scrims)} scrims")
+        
+        # Debug: Check if each tournament has Tournament-id
+        for i, tournament in enumerate(tournaments):
+            print(f"Tournament {i}: has Tournament-id: {'Tournament-id' in tournament}")
+            
+        # Debug: Check if each scrim has Scrims-id
+        for i, scrim in enumerate(scrims):
+            print(f"Scrim {i}: has Scrims-id: {'Scrims-id' in scrim}")
+        
+        return render_template('esports/game_detail.html', 
+                              game=game,
+                              tournaments=tournaments,
+                              scrims=scrims)
+    except Exception as e:
+        import traceback
+        print(f"Error fetching game details: {e}")
+        print(traceback.format_exc())  # Print full stack trace
+        flash('Error loading game details', 'error')
+        return redirect(url_for('e_sports'))
+
+
+@app.route('/register/<registration_type>/<int:id>')
+def register(registration_type, id):
+    try:
+        if registration_type not in ['tournament', 'scrim']:
+            flash('Invalid registration type', 'error')
+            return redirect(url_for('e_sports'))
+        
+        # Get game_id based on the tournament or scrim
+        if registration_type == 'tournament':
+            # Get tournament data, including game info
+            response = supabase.table('Tournaments').select('*,Games:Game-id(Game)').execute()
+            print(f"Looking for tournament with id {id}")
+            
+            # Find the tournament with matching id
+            matching_items = []
+            for item in response.data:
+                tournament_id = item.get('Tournament-id') 
+                if tournament_id and str(tournament_id) == str(id):
+                    matching_items.append(item)
+            
+            if not matching_items:
+                flash(f'Tournament with ID {id} not found', 'error')
+                return redirect(url_for('e_sports'))                
+            item = matching_items[0]
+            game_id = item['Game-id']
+            game_name = item['Games']['Game']
+            item_name = item['name']
+            item_fee = item.get('entry_fee', 0)
+            
+            return render_template('esports/e_registration.html',
+                                registration_type=registration_type,
+                                game_id=game_id,
+                                game_name=game_name,
+                                tournament_id=id,
+                                tournament_name=item_name,
+                                tournament_fee=item_fee)
+        else:
+            # Handle scrim registration
+            response = supabase.table('Scrims').select('*,Games:Game-id(Game)').execute()
+            print(f"Looking for scrim with id {id}")
+            
+            # Find the scrim with matching id
+            matching_items = []
+            for item in response.data:
+                scrim_id = item.get('Scrims-id')
+                if scrim_id and str(scrim_id) == str(id):
+                    matching_items.append(item)
+            
+            if not matching_items:
+                flash(f'Scrim with ID {id} not found', 'error')
+                return redirect(url_for('e_sports'))
+                
+            item = matching_items[0]
+            game_id = item['Game-id']
+            game_name = item['Games']['Game']
+            item_title = item['title']
+            item_fee = item.get('fee', 0)
+            
+            return render_template('esports/e_registration.html',
+                                registration_type=registration_type,
+                                game_id=game_id,
+                                game_name=game_name,
+                                scrim_id=id,
+                                scrim_title=item_title,
+                                scrim_fee=item_fee)
+                                
+    except Exception as e:
+        print(f"Error loading registration page: {e}")
+        flash('Error loading registration page', 'error')
+        return redirect(url_for('e_sports'))
+
+@app.route('/submit_registration', methods=['POST'])
+def submit_registration():
+    if request.method != 'POST':
+        return jsonify({'success': False, 'message': 'Invalid request method'})
+        
+    try:
+        # Get form data
+        registration_type = request.form.get('registration_type')
+        game_id = request.form.get('game_id')
+        
+        # Basic player info
+        player_name = request.form.get('player_name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        game_handle = request.form.get('game_handle')
+        
+        # Check if payment proof file exists
+        if 'payment_proof' not in request.files:
+            return jsonify({'success': False, 'message': 'Payment proof is required'})
+            
+        payment_file = request.files['payment_proof']
+        if not payment_file or payment_file.filename == '':
+            return jsonify({'success': False, 'message': 'No payment proof selected'})
+        
+        # Check file extension
+        allowed_extensions = {'png', 'jpg', 'jpeg'}
+        if not payment_file.filename.split('.')[-1].lower() in allowed_extensions:
+            return jsonify({'success': False, 'message': 'Only image files are allowed for payment proof'})
+            
+        # Upload payment proof to Supabase storage
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        filename = f"payment_{registration_type}_{timestamp}_{secure_filename(payment_file.filename)}"
+        storage_path = f"payment_proofs/{filename}"
+        
+        # Read file content and upload to Supabase storage
+        file_content = payment_file.read()
+        supabase.storage.from_('esports').upload(storage_path, file_content)
+          # Get payment proof URL
+        payment_proof_url = supabase.storage.from_('esports').get_public_url(storage_path)
+        
+        # Prepare data for database based on actual table schema
+        registration_data = {
+            'Game-id': game_id,
+            'Player-name': player_name,
+            'Email': email,
+            'Game-handle': game_handle,
+            'Payment-proof': payment_proof_url,  # Store as varchar
+            'Reg-date': datetime.now().isoformat()
+        }
+        
+        # Add tournament/scrim specific data
+        if registration_type == 'tournament':
+            tournament_id = request.form.get('tournament_id')
+            team_name = request.form.get('team_name')
+            
+            # Team members
+            members = []
+            for i in range(1, 4):  # 3 additional members
+                member = {
+                    'name': request.form.get(f'member{i}_name'),
+                    'handle': request.form.get(f'member{i}_handle')
+                }
+                members.append(member)
+                
+            # Substitutes (optional)
+            substitutes = []
+            for i in range(1, 3):  # 2 substitutes
+                sub_name = request.form.get(f'sub{i}_name')
+                sub_handle = request.form.get(f'sub{i}_handle')
+                
+                if sub_name and sub_handle:
+                    substitutes.append({
+                        'name': sub_name,
+                        'handle': sub_handle
+                    })
+              # Update registration data with tournament specific fields using correct column names
+            registration_data.update({
+                'Tournament-id': tournament_id,
+                'Team-name': team_name,
+                'Team-members': members,            # Already in JSON format
+                'Substitures': substitutes         # Note: "Substitures" matches your schema (not "Substitutes")
+            })
+              # Insert into Tournament_Registrations table
+            supabase.table('Tournament_Registrations').insert(registration_data).execute()
+            
+        elif registration_type == 'scrim':
+            scrim_id = request.form.get('scrim_id')
+            registration_data['Scrim-id'] = scrim_id
+            
+            # Insert into Scrim_Registrations table
+            supabase.table('Scrim_Registrations').insert(registration_data).execute()
+        
+        # Send email notification to admin
+        try:
+            receiver_email = os.environ.get('EMAIL_ID')
+            sender_account_email = os.environ.get('EMAIL_ID')
+            sender_account_password = os.environ.get('APP_PASSWORD')
+            
+            subject = f"New {registration_type.capitalize()} Registration"
+            
+            # Customize email body based on registration type
+            if registration_type == 'tournament':
+                body = f"""
+                New Tournament Registration:
+                
+                Player: {player_name}
+                Email: {email}
+                Phone: {phone}
+                Game Handle: {game_handle}
+                Team Name: {team_name}
+                
+                Registration needs to be verified in the admin dashboard.
+                """
+            else:
+                body = f"""
+                New Scrim Registration:
+                
+                Player: {player_name}
+                Email: {email}
+                Phone: {phone}
+                Game Handle: {game_handle}
+                
+                Registration needs to be verified in the admin dashboard.
+                """
+                
+            msg = MIMEText(body)
+            msg['Subject'] = subject
+            msg['From'] = sender_account_email
+            msg['To'] = receiver_email
+            
+            with smtplib.SMTP('smtp.gmail.com', 587) as server:
+                server.starttls()
+                server.login(sender_account_email, sender_account_password)
+                server.send_message(msg)
+        except Exception as e:
+            print(f"Email notification failed: {e}")
+            # Continue with success response even if email fails
+            
+        return jsonify({
+            'success': True,
+            'message': 'Registration submitted successfully! We will verify your payment and confirm your registration.'
+        })
+            
+    except Exception as e:
+        print(f"Error processing registration: {e}")
+        return jsonify({
+            'success': False,
+            'message': 'An error occurred while processing your registration. Please try again.'
+        })
+
 
 if __name__ == '__main__':
     app.run(debug=False)
