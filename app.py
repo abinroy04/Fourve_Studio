@@ -1,5 +1,5 @@
 #Fourve Studio Flask Application - Abin Roy
-from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
+from flask import Flask, render_template, request, flash, send_from_directory, jsonify
 import smtplib
 from email.mime.text import MIMEText
 import os
@@ -37,6 +37,14 @@ def event_management():
 @app.route('/fourve-e-sports')
 def e_sports():
     return render_template('esports/esports.html')
+
+@app.route('/sitemap.xml')
+def serve_sitemap():
+    return send_from_directory('static', 'sitemap.xml')
+
+@app.route('/robots.txt')
+def serve_robots():
+    return send_from_directory('static', 'robots.txt')
 
 
 # Index page things
